@@ -1,0 +1,97 @@
+/*
+ * Yan BTY wordmark — brand guidelines §4 p.35–46
+ *
+ * Two-line stacked mark:
+ *   "yan®" — Comfortaa Light (rounded geometric, per logo letterforms)
+ *   "BTY"  — Outfit ExtraLight, wide tracking
+ *
+ * Colour: single colour per context (p.39)
+ * Minimum digital size: 130px wide (p.38)
+ */
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0;
+  gap: 0;
+}
+.logo:hover { opacity: 0.82; }
+
+/* Line 1 wrapper keeps ® outside the centring calculation (p.36) */
+.yanWrap {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+/* "yan" — rounded geometric lowercase (Comfortaa Light) */
+.yan {
+  font-family: 'Comfortaa', 'Nunito', 'Varela Round', cursive;
+  font-weight: 300;
+  letter-spacing: -0.01em;   /* slightly tighter than default — matches logo image */
+  text-transform: lowercase;
+  line-height: 1;
+  display: block;
+}
+
+/* ® — small superscript, excluded from centring */
+.reg {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  vertical-align: super;
+  margin-left: 0.06em;
+}
+
+/* "BTY" — uppercase, widely spaced, centred under "yan" */
+.bty {
+  font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.55em;    /* very wide — matches the spaced B T Y in images */
+  text-indent: 0.55em;       /* optical compensation for trailing spacing */
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  line-height: 1;
+}
+
+/* ── Size scale ──
+ * Based on page 38: minimum digital size 130px
+ * Proportions: yan ≈ 75%, bty ≈ 20% of total logo height, gap ≈ 5% */
+.xs  { }
+.xs  .yan { font-size: 16px; }
+.xs  .bty { font-size: 5px;  margin-top: 2px; }
+.xs  .reg { font-size: 6px; }
+
+.sm  { }
+.sm  .yan { font-size: 22px; }
+.sm  .bty { font-size: 7px;  margin-top: 3px; }
+.sm  .reg { font-size: 8px; }
+
+.md  { }
+.md  .yan { font-size: 28px; }
+.md  .bty { font-size: 8px;  margin-top: 4px; }
+.md  .reg { font-size: 10px; }
+
+.lg  { }
+.lg  .yan { font-size: 40px; }
+.lg  .bty { font-size: 11px; margin-top: 5px; }
+.lg  .reg { font-size: 13px; }
+
+.xl  { }
+.xl  .yan { font-size: 56px; }
+.xl  .bty { font-size: 14px; margin-top: 7px; }
+.xl  .reg { font-size: 18px; }
+
+.xxl { }
+.xxl .yan { font-size: 80px; }
+.xxl .bty { font-size: 20px; margin-top: 10px; }
+.xxl .reg { font-size: 24px; }
+
+/* ── Colour variants (p.39) — single colour per context ── */
+.dark  { color: #332114; }    /* YB Brown — on light/taupe backgrounds */
+.light { color: #ffffff; }    /* White    — on dark/brown backgrounds  */
+.red   { color: #b25745; }    /* YB Tabla Red — accent contexts        */

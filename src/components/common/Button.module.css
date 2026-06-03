@@ -1,0 +1,120 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm {
+  font-size: 11px;
+  padding: 8px 16px;
+  height: 36px;
+}
+
+.md {
+  font-size: 12px;
+  padding: 12px 24px;
+  height: 44px;
+}
+
+.lg {
+  font-size: 13px;
+  padding: 16px 32px;
+  height: 52px;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-brown);
+  color: var(--color-white);
+  border-color: var(--color-brown);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-tabla-red);
+  border-color: var(--color-tabla-red);
+}
+
+.accent {
+  background-color: var(--color-tabla-red);
+  color: var(--color-white);
+  border-color: var(--color-tabla-red);
+}
+
+.accent:hover:not(:disabled) {
+  background-color: #9a4639;
+  border-color: #9a4639;
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-brown);
+  border-color: var(--color-brown);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--color-brown);
+  color: var(--color-white);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-bg-soft);
+  color: var(--color-brown);
+}
+
+.light {
+  background-color: var(--color-light-taupe);
+  color: var(--color-brown);
+  border-color: transparent;
+}
+
+.light:hover:not(:disabled) {
+  background-color: var(--color-medium-taupe);
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Loading */
+.loading {
+  pointer-events: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,30 @@
+.page { padding-bottom: 80px; }
+.hero { background: var(--color-bg-soft); padding: 60px 0 40px; text-align: center; margin-bottom: 48px; }
+.heroLabel { font-size: 11px; font-weight: var(--font-weight-medium); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-tabla-red); margin-bottom: 12px; }
+.heroTitle { font-size: clamp(32px, 5vw, 56px); font-weight: var(--font-weight-extralight); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-brown); margin-bottom: 12px; }
+.heroSub { font-size: 16px; font-weight: var(--font-weight-light); color: var(--color-text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+.storeGrid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 64px; }
+@media (min-width: 768px) { .storeGrid { grid-template-columns: repeat(3, 1fr); } }
+
+.storeCard { padding: 32px; border: 1px solid var(--color-border-light); border-radius: var(--radius-xl); position: relative; display: flex; flex-direction: column; gap: 16px; transition: box-shadow var(--transition-base); }
+.storeCard:hover { box-shadow: var(--shadow-md); }
+.storeCardMain { background: var(--color-bg-soft); border-color: var(--color-tabla-red); }
+
+.mainBadge { position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; background: var(--color-tabla-red); color: white; padding: 4px 10px; border-radius: var(--radius-full); }
+.storeName { font-size: 18px; font-weight: var(--font-weight-regular); color: var(--color-brown); }
+.storeCity { font-size: 11px; font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-tabla-red); }
+
+.storeDetails { display: flex; flex-direction: column; gap: 10px; }
+.storeDetail { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: var(--font-weight-light); color: var(--color-text-secondary); }
+.storeDetail svg { color: var(--color-tabla-red); flex-shrink: 0; margin-top: 2px; }
+
+.services { display: flex; flex-wrap: wrap; gap: 6px; }
+.service { font-size: 11px; font-weight: var(--font-weight-regular); padding: 4px 10px; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text-secondary); }
+
+.directionsBtn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: var(--font-weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-tabla-red); margin-top: 8px; }
+.directionsBtn:hover { text-decoration: underline; }
+
+.clickCollect { background: var(--color-brown); padding: 48px; border-radius: var(--radius-xl); text-align: center; }
+.clickCollectTitle { font-size: 24px; font-weight: var(--font-weight-extralight); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: white; margin-bottom: 12px; }
+.clickCollectDesc { font-size: 15px; font-weight: var(--font-weight-light); color: var(--color-medium-taupe); line-height: 1.7; max-width: 480px; margin: 0 auto; }

@@ -1,0 +1,164 @@
+{
+  "_readme": "Edit this file to update any text on the website without touching code. Re-run `npm run build` after saving changes.",
+
+  "site": {
+    "name": "Yan BTY",
+    "tagline": "Be You",
+    "description": "Morocco's premium multi-brand beauty destination. Where every beauty lover can discover established icons and future favourites.",
+    "url": "https://www.yanbty.ma",
+    "email": "hello@yanbty.ma",
+    "phone": "+212 5 00 00 00 00",
+    "socialInstagram": "https://www.instagram.com/yanbty",
+    "socialTikTok": "https://www.tiktok.com/@yanbty",
+    "socialFacebook": "https://www.facebook.com/yanbty",
+    "socialPinterest": "https://www.pinterest.com/yanbty",
+    "socialYouTube": "https://www.youtube.com/@yanbty"
+  },
+
+  "promoBar": "Free shipping on orders over 500 MAD · Loyalty Points on every order",
+
+  "homepage": {
+    "heroEyebrow": "New Season · Autumn 2025",
+    "heroLine1": "Be Your",
+    "heroLine2": "Beautiful.",
+    "heroLine3": "Be Unique.",
+    "heroSubtitle": "Morocco's premium multi-brand beauty destination. Discover established icons and future favourites.",
+    "heroCta1": "Shop Now",
+    "heroCta2": "Explore Yan&One",
+    "yanOneEyebrow": "Our Signature Collection",
+    "yanOneTitle": "Yan&One",
+    "yanOneBody": "Crafted in Morocco with a global perspective. Every formula is clean, inclusive, and beautifully effective — designed for every skin, inspired by every journey.",
+    "yanOnePills": ["Clean Beauty", "Cruelty-Free", "Inclusive Shades", "Dermatologist Tested"],
+    "yanOneCta": "Shop Yan&One",
+    "bestsellersLabel": "Most Loved",
+    "bestsellersTitle": "Bestsellers",
+    "newLabel": "Just In",
+    "newTitle": "New Arrivals",
+    "editorialLabel": "Yan BTY Editors",
+    "editorialTitle": "Editor's Picks",
+    "brandsLabel": "Curated Selection",
+    "brandsTitle": "Our Brands",
+    "journalLabel": "Read More",
+    "journalTitle": "Beauty Journal",
+    "profileLabel": "Personalised For You",
+    "profileTitle": "Find Your Perfect Match",
+    "profileBody": "Tell us your skin type, concerns, and preferences — we'll surface products that are truly \"Good For You\" and build your ideal routine.",
+    "profileCta": "Take the Beauty Quiz",
+    "loyaltyTitle": "Join kenzup Loyalty",
+    "loyaltyBody": "Earn points with every purchase and review. Redeem for exclusive rewards and early access to new launches.",
+    "loyaltyCta": "Join Now — It's Free"
+  },
+
+  "header": {
+    "freeShippingThreshold": 500,
+    "freeShippingText": "Free shipping on orders over {amount} MAD",
+    "loyaltyText": "Loyalty Points on every order"
+  },
+
+  "footer": {
+    "brandDescription": "Morocco's premium multi-brand beauty destination. Where every beauty lover can discover established icons and future favourites.",
+    "newsletterLabel": "Stay in the know",
+    "newsletterTitle": "Beauty delivered to your inbox.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterCta": "Subscribe",
+    "copyright": "© 2025 Yan BTY. All rights reserved.",
+    "websiteUrl": "www.yanbty.ma"
+  },
+
+  "checkout": {
+    "freeShippingThreshold": 500,
+    "shippingCost": 49,
+    "samplesMinBasket": 0,
+    "maxSamples": 2
+  },
+
+  "loyalty": {
+    "programName": "kenzup",
+    "appUrl": "https://www.kenzup.com/",
+    "pointsPerMad": 1,
+    "reviewBonus": 50,
+    "referralBonus": 200,
+    "birthdayBonus": 100,
+    "tiers": ["Member", "Silver", "Gold", "Platinum"]
+  },
+
+  "stores": [
+    {
+      "id": 1,
+      "name": "Yan BTY Morocco Mall",
+      "city": "Casablanca",
+      "address": "Morocco Mall, Bd de la Corniche, Casablanca",
+      "phone": "+212 5 22 00 00 00",
+      "hours": "Mon–Sat 10:00–22:00 · Sun 11:00–21:00",
+      "services": ["Beauty Consultations", "Makeovers", "Skincare Consultations"],
+      "isMain": true
+    },
+    {
+      "id": 2,
+      "name": "Yan BTY Maarif",
+      "city": "Casablanca",
+      "address": "Centre Maarif, Casablanca",
+      "phone": "+212 5 22 00 00 01",
+      "hours": "Mon–Sat 10:00–21:00 · Sun 11:00–20:00",
+      "services": ["Beauty Consultations", "Skincare Consultations"],
+      "isMain": false
+    },
+    {
+      "id": 3,
+      "name": "Yan BTY Marina",
+      "city": "Agadir",
+      "address": "Marina d'Agadir, Agadir",
+      "phone": "+212 5 28 00 00 00",
+      "hours": "Mon–Sat 10:00–21:00 · Sun 11:00–20:00",
+      "services": ["Beauty Consultations"],
+      "isMain": false
+    },
+    {
+      "id": 4,
+      "name": "Yan BTY Tangier",
+      "city": "Tangier",
+      "address": "Centre Commercial, Tangier",
+      "phone": "+212 5 39 00 00 00",
+      "hours": "Mon–Sat 10:00–21:00 · Sun 11:00–20:00",
+      "services": ["Beauty Consultations"],
+      "isMain": false
+    },
+    {
+      "id": 5,
+      "name": "Yan BTY Mega Mall",
+      "city": "Rabat",
+      "address": "Mega Mall, Rabat",
+      "phone": "+212 5 37 00 00 00",
+      "hours": "Mon–Sat 10:00–21:00 · Sun 11:00–20:00",
+      "services": ["Beauty Consultations", "Skincare Consultations"],
+      "isMain": false
+    },
+    {
+      "id": 6,
+      "name": "Yan BTY Morocco Mall",
+      "city": "Marrakech",
+      "address": "Morocco Mall Marrakech, Marrakech",
+      "phone": "+212 5 24 00 00 00",
+      "hours": "Mon–Sat 10:00–21:30 · Sun 11:00–20:30",
+      "services": ["Beauty Consultations", "Makeovers"],
+      "isMain": false
+    }
+  ],
+
+  "giftCards": {
+    "deliveryDays": "2–3",
+    "terms": [
+      "Physical gift cards and sets are delivered within 2–3 working days to any address in Morocco.",
+      "Valid in all Yan BTY stores and at yanbty.ma. Gift cards do not expire.",
+      "Gift cards cannot be exchanged for cash. Partial redemption leaves balance on the card.",
+      "Category gift set contents may vary seasonally. Substitutions are of equivalent value.",
+      "Lost or stolen cards cannot be replaced without proof of purchase."
+    ]
+  },
+
+  "seo": {
+    "defaultTitle": "Yan BTY — Be You",
+    "defaultDescription": "Morocco's premium multi-brand beauty destination. Discover makeup, skincare, fragrance and more from the world's finest brands alongside Yan&One, our signature collection.",
+    "ogImage": "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=1200&q=85"
+  }
+}

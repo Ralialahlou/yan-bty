@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+}
+
+.star { color: var(--color-tabla-red); }
+.starHalf { color: var(--color-tabla-red); opacity: 0.6; }
+.starEmpty { color: var(--color-border); }
+
+.sm .star, .sm .starHalf, .sm .starEmpty { font-size: 12px; }
+.md .star, .md .starHalf, .md .starEmpty { font-size: 16px; }
+.lg .star, .lg .starHalf, .lg .starEmpty { font-size: 20px; }
+
+.count {
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-light);
+}
+.sm .count { font-size: 11px; }
+.md .count { font-size: 13px; }
+.lg .count { font-size: 15px; }

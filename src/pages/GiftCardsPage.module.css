@@ -1,0 +1,345 @@
+/* ═══════════════════════════════════
+   GIFT CARDS PAGE
+   Inspired by actual brand photographs:
+   • gift-card-1: tabla-red physical card, logo, "BECAUSE YOU DESERVE IT"
+   • gift-card-2: category squares, textured bg, logo, www.yanbty.ma
+   ═══════════════════════════════════ */
+
+/* ── Hero ── */
+.hero {
+  background: var(--color-brown);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding: 72px var(--container-padding) 56px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .hero { grid-template-columns: 1fr 1fr; align-items: center; padding: 88px var(--container-padding); }
+}
+
+.heroText { display: flex; flex-direction: column; gap: 18px; }
+.heroEyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-light-tabla-red);
+}
+.heroTitle {
+  display: flex; flex-direction: column;
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 200; letter-spacing: var(--tracking-wider);
+  text-transform: uppercase; color: white; line-height: 0.95;
+}
+.heroAccent { color: var(--color-light-tabla-red); }
+.heroBody {
+  font-size: 15px; font-weight: 400;
+  color: rgba(235,222,204,0.72); line-height: 1.75; max-width: 400px;
+}
+
+/* Stacked card preview — references gift card 1 photograph */
+.heroCards {
+  position: relative;
+  height: 240px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.heroCardEnvelope {
+  position: absolute;
+  width: 210px; height: 128px;
+  background: var(--color-medium-taupe);
+  border-radius: 6px;
+  transform: rotate(-4deg) translateY(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.heroCardBack {
+  position: absolute;
+  width: 210px; height: 128px;
+  background: #c4735e;
+  border-radius: 8px;
+  transform: rotate(2deg) translateY(8px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Main card — matches the tabla-red physical card in photograph */
+.heroCardFront {
+  position: relative;
+  width: 210px; height: 128px;
+  background: var(--color-tabla-red);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.heroCardFront::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.heroCardPhrase {
+  font-size: 8px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  position: relative; z-index: 1;
+}
+.heroCardSub {
+  font-size: 7px; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(235,222,204,0.5);
+  position: relative; z-index: 1;
+}
+
+/* Ribbon curl (decorative — visible in photograph) */
+.heroRibbon {
+  position: absolute;
+  right: 30px; top: 30px;
+  width: 48px; height: 120px;
+  background: linear-gradient(135deg, var(--color-light-tabla-red) 0%, rgba(212,163,145,0.3) 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(15deg);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ── Shared section ── */
+.section { padding: 64px 0 32px; }
+
+.sectionHead {
+  margin-bottom: 36px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.sectionLabel {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--color-tabla-red);
+}
+.sectionTitle {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 200; letter-spacing: var(--tracking-wide);
+  text-transform: uppercase; color: var(--color-brown);
+}
+.sectionSub {
+  font-size: 14px; font-weight: 400;
+  color: var(--color-text-muted); max-width: 420px; line-height: 1.6;
+}
+
+/* ════════════════════════════════════
+   AMOUNT GIFT CARDS
+   ISO credit-card ratio (85.6×54mm)
+   Matches gift card 1 photograph style
+   ════════════════════════════════════ */
+.amountGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (min-width: 768px) { .amountGrid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+
+.cardOuter {
+  position: relative;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.badge {
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--color-brown); color: white;
+  padding: 4px 12px; border-radius: var(--radius-full);
+  z-index: 2; white-space: nowrap;
+}
+.badgePremium {
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: #8b6914; color: white;
+  padding: 4px 12px; border-radius: var(--radius-full);
+  z-index: 2; white-space: nowrap;
+}
+
+/* Physical card face */
+.physCard {
+  position: relative;
+  aspect-ratio: 85.6 / 54;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.physCard:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-lg); }
+
+/* Dot/grid pattern overlay — visible in the actual Yan BTY gift card photo */
+.dotPattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(128,80,60,0.12) 1px, transparent 1px);
+  background-size: 12px 12px;
+  z-index: 0;
+}
+
+.physCardTop { position: relative; z-index: 1; }
+.physCardMid { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; }
+.physCardBottom { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2px; }
+
+.physCardPhrase {
+  font-size: clamp(7px, 1vw, 10px);
+  font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; line-height: 1.3;
+}
+.physCardAmount {
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 200; letter-spacing: 0.04em;
+}
+.physCardSub {
+  font-size: 7px; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* Shimmer sweep animation */
+.shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+  animation: shimmerSweep 3s ease-in-out infinite;
+  pointer-events: none; z-index: 1;
+}
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  40%, 100% { transform: translateX(100%); }
+}
+
+/* Shared card info below */
+.cardInfo {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+.cardPrice { font-size: 16px; font-weight: 200; color: var(--color-brown); }
+
+/* ════════════════════════════════════
+   CATEGORY GIFT SETS
+   Square cards with textured photo bg
+   + logo + category name + URL
+   Matches gift card 2 photograph style
+   ════════════════════════════════════ */
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+@media (min-width: 640px) { .catGrid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+
+.catOuter { display: flex; flex-direction: column; gap: 10px; }
+
+.catCard {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.catCard:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-md); }
+.catCard:hover .catCardImg { transform: scale(1.06); }
+
+.catCardImg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+/* Dark overlay — makes logo + text legible over photos */
+.catCardOverlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+/* Content: logo centred, category name, URL */
+.catCardContent {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; padding: 16px;
+  text-align: center;
+}
+
+.catCardLabel {
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 200; letter-spacing: var(--tracking-wider);
+  text-transform: uppercase; color: white;
+  line-height: 1;
+}
+
+.catCardUrl {
+  font-size: 8px; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: lowercase;
+  color: rgba(255,255,255,0.55);
+  position: absolute; bottom: 10px;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex; align-items: center; gap: 16px;
+  padding: 8px 0; margin: 8px 0;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--color-border-light);
+}
+.divider span {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-text-muted); white-space: nowrap;
+}
+
+/* ── How it works ── */
+.how {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin: 48px 0 32px;
+}
+@media (min-width: 640px) { .how { grid-template-columns: repeat(3, 1fr); } }
+
+.howStep {
+  padding: 28px 24px;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--color-bg-soft);
+}
+@media (min-width: 640px) {
+  .howStep { border-bottom: none; border-right: 1px solid var(--color-border-light); }
+  .howStep:last-child { border-right: none; }
+}
+.howN { font-size: 10px; font-weight: 600; letter-spacing: var(--tracking-widest); color: var(--color-tabla-red); }
+.howTitle { font-size: 15px; font-weight: 200; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-brown); }
+.howDesc { font-size: 13px; font-weight: 400; color: var(--color-text-secondary); line-height: 1.65; }
+
+/* ── Terms ── */
+.terms {
+  padding: 28px; background: var(--color-bg-soft);
+  border-radius: var(--radius-xl); margin-bottom: 64px;
+}
+.termsTitle {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-brown); margin-bottom: 12px;
+}
+.termsList { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.termsList li {
+  font-size: 13px; font-weight: 400;
+  color: var(--color-text-secondary); line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.termsList li::before { content: '–'; position: absolute; left: 0; color: var(--color-light-tabla-red); }

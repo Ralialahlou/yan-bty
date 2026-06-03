@@ -1,0 +1,61 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.small {
+  font-size: 9px;
+  padding: 2px 6px;
+}
+
+.default {
+  background: var(--color-light-taupe);
+  color: var(--color-text-secondary);
+}
+
+.new {
+  background: var(--color-tabla-red);
+  color: var(--color-white);
+}
+
+.bestseller {
+  background: var(--color-brown);
+  color: var(--color-white);
+}
+
+.editors {
+  background: var(--color-medium-taupe);
+  color: var(--color-brown);
+}
+
+.clean {
+  background: #e8f4e8;
+  color: #2d6a2d;
+}
+
+.vegan {
+  background: #e8f4e8;
+  color: #2d6a2d;
+}
+
+.pregnancy {
+  background: #fef3e8;
+  color: #b45309;
+}
+
+.own {
+  background: var(--color-tabla-red);
+  color: var(--color-white);
+}
+
+.good {
+  background: #d4f7e8;
+  color: #166534;
+}
