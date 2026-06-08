@@ -1,12 +1,12 @@
 .footer {
-  background: var(--color-brown);
+  background: var(--color-midnight, #100818);
   color: var(--color-medium-taupe);
   margin-top: auto;
 }
 
 /* Newsletter */
 .top {
-  background: var(--color-tabla-red);
+  background: linear-gradient(135deg, var(--color-plum,#3d1545), var(--color-deep-rose,#8b2252));
   padding: 40px var(--container-padding);
 }
 
@@ -130,8 +130,8 @@
   transition: all var(--transition-fast);
 }
 .socialLink:hover {
-  background: var(--color-tabla-red);
-  border-color: var(--color-tabla-red);
+  background: linear-gradient(135deg, var(--color-rose,#c96882), var(--color-deep-rose,#8b2252));
+  border-color: var(--color-rose,#c96882);
   color: white;
 }
 
@@ -208,7 +208,7 @@
 
 /* Pattern strip */
 .pattern {
-  background: var(--color-tabla-red);
+  background: linear-gradient(90deg, var(--color-deep-rose,#8b2252), var(--color-plum,#3d1545));
   overflow: hidden;
   padding: 8px 0;
   white-space: nowrap;

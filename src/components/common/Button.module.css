@@ -45,6 +45,8 @@
   background-color: var(--color-brown);
   color: var(--color-white);
   border-color: var(--color-brown);
+  position: relative;
+  overflow: hidden;
 }
 
 .primary:hover:not(:disabled) {
@@ -52,15 +54,25 @@
   border-color: var(--color-tabla-red);
 }
 
+.primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmerSweep 3s ease-in-out infinite;
+}
+
 .accent {
-  background-color: var(--color-tabla-red);
+  background: linear-gradient(135deg, var(--color-deep-rose,#8b2252), var(--color-rose,#c96882));
   color: var(--color-white);
-  border-color: var(--color-tabla-red);
+  border: none;
 }
 
 .accent:hover:not(:disabled) {
-  background-color: #9a4639;
-  border-color: #9a4639;
+  background: linear-gradient(135deg, var(--color-rose,#c96882), var(--color-deep-rose,#8b2252));
+  border: none;
+  transform: translateY(-1px);
 }
 
 .outline {
