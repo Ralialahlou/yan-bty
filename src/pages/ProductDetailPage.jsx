@@ -103,8 +103,10 @@ export default function ProductDetailPage() {
               <button
                 className={styles.wishlistBtn}
                 onClick={() => toggleWishlist(product.id)}
+                aria-label={wishlisted ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`}
+                aria-pressed={wishlisted}
               >
-                <Heart size={18} fill={wishlisted ? 'currentColor' : 'none'} />
+                <Heart size={18} fill={wishlisted ? 'currentColor' : 'none'} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -218,11 +220,13 @@ export default function ProductDetailPage() {
               <div className={styles.qty}>
                 <button
                   className={styles.qtyBtn}
+                  aria-label="Decrease quantity"
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
                 >−</button>
-                <span className={styles.qtyNum}>{quantity}</span>
+                <span className={styles.qtyNum} aria-live="polite" aria-label={`Quantity: ${quantity}`}>{quantity}</span>
                 <button
                   className={styles.qtyBtn}
+                  aria-label="Increase quantity"
                   onClick={() => setQuantity(q => q + 1)}
                 >+</button>
               </div>
@@ -243,8 +247,10 @@ export default function ProductDetailPage() {
               <button
                 className={[styles.wishlistFullBtn, wishlisted ? styles.wishlisted : ''].join(' ')}
                 onClick={() => toggleWishlist(product.id)}
+                aria-label={wishlisted ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`}
+                aria-pressed={wishlisted}
               >
-                <Heart size={18} fill={wishlisted ? 'currentColor' : 'none'} />
+                <Heart size={18} fill={wishlisted ? 'currentColor' : 'none'} aria-hidden="true" />
               </button>
             </div>
 

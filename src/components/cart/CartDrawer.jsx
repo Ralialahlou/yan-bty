@@ -29,14 +29,14 @@ export default function CartDrawer() {
   return (
     <>
       <div className={styles.overlay} onClick={closeCart} />
-      <aside className={styles.drawer}>
+      <aside className={styles.drawer} role="dialog" aria-modal="true" aria-label="Shopping cart">
         <div className={styles.head}>
           <div className={styles.headLeft}>
-            <ShoppingBag size={18} />
+            <ShoppingBag size={18} aria-hidden="true" />
             <span className={styles.headTitle}>My Bag</span>
-            {itemCount > 0 && <span className={styles.headCount}>{itemCount}</span>}
+            {itemCount > 0 && <span className={styles.headCount} aria-hidden="true">{itemCount}</span>}
           </div>
-          <button className={styles.closeBtn} onClick={closeCart}><X size={20} /></button>
+          <button className={styles.closeBtn} onClick={closeCart} aria-label="Close cart"><X size={20} aria-hidden="true" /></button>
         </div>
 
         {remaining > 0 && (
@@ -73,19 +73,19 @@ export default function CartDrawer() {
                     {item.sizeLabel && <p className={styles.itemVariant}>{item.sizeLabel}</p>}
                     <div className={styles.itemActions}>
                       <div className={styles.qty}>
-                        <button onClick={() => updateQty(item.cartKey, item.quantity - 1)} className={styles.qtyBtn}>
-                          <Minus size={12} />
+                        <button onClick={() => updateQty(item.cartKey, item.quantity - 1)} className={styles.qtyBtn} aria-label={`Decrease quantity of ${item.name}`}>
+                          <Minus size={12} aria-hidden="true" />
                         </button>
-                        <span className={styles.qtyNum}>{item.quantity}</span>
-                        <button onClick={() => updateQty(item.cartKey, item.quantity + 1)} className={styles.qtyBtn}>
-                          <Plus size={12} />
+                        <span className={styles.qtyNum} aria-live="polite" aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                        <button onClick={() => updateQty(item.cartKey, item.quantity + 1)} className={styles.qtyBtn} aria-label={`Increase quantity of ${item.name}`}>
+                          <Plus size={12} aria-hidden="true" />
                         </button>
                       </div>
                       <span className={styles.itemPrice}>{(item.price * item.quantity).toLocaleString()} MAD</span>
                     </div>
                   </div>
-                  <button onClick={() => removeItem(item.cartKey)} className={styles.removeBtn}>
-                    <X size={14} />
+                  <button onClick={() => removeItem(item.cartKey)} className={styles.removeBtn} aria-label={`Remove ${item.name} from cart`}>
+                    <X size={14} aria-hidden="true" />
                   </button>
                 </div>
               ))}

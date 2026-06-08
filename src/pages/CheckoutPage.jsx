@@ -88,20 +88,20 @@ export default function CheckoutPage() {
                 <h2 className={styles.stepTitle}>Your Details</h2>
                 <div className={styles.formGrid}>
                   <div>
-                    <label className={styles.label}>First Name</label>
-                    <input className={styles.input} value={form.firstName} onChange={e => update('firstName', e.target.value)} placeholder="Layla" />
+                    <label htmlFor="co-first-name" className={styles.label}>First Name</label>
+                    <input id="co-first-name" className={styles.input} value={form.firstName} onChange={e => update('firstName', e.target.value)} placeholder="Layla" autoComplete="given-name" />
                   </div>
                   <div>
-                    <label className={styles.label}>Last Name</label>
-                    <input className={styles.input} value={form.lastName} onChange={e => update('lastName', e.target.value)} placeholder="Benhaddou" />
+                    <label htmlFor="co-last-name" className={styles.label}>Last Name</label>
+                    <input id="co-last-name" className={styles.input} value={form.lastName} onChange={e => update('lastName', e.target.value)} placeholder="Benhaddou" autoComplete="family-name" />
                   </div>
                   <div className={styles.fullCol}>
-                    <label className={styles.label}>Email Address</label>
-                    <input className={styles.input} type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="you@example.com" />
+                    <label htmlFor="co-email" className={styles.label}>Email Address</label>
+                    <input id="co-email" className={styles.input} type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="you@example.com" autoComplete="email" />
                   </div>
                   <div className={styles.fullCol}>
-                    <label className={styles.label}>Phone Number</label>
-                    <input className={styles.input} value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+212 6 00 00 00 00" />
+                    <label htmlFor="co-phone" className={styles.label}>Phone Number</label>
+                    <input id="co-phone" className={styles.input} value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+212 6 00 00 00 00" autoComplete="tel" />
                   </div>
                 </div>
                 <Button variant="primary" fullWidth size="lg" onClick={() => setStep(2)}>
@@ -115,16 +115,16 @@ export default function CheckoutPage() {
                 <h2 className={styles.stepTitle}>Shipping Address</h2>
                 <div className={styles.formGrid}>
                   <div className={styles.fullCol}>
-                    <label className={styles.label}>Address</label>
-                    <input className={styles.input} value={form.address} onChange={e => update('address', e.target.value)} placeholder="12 Rue Ibn Battuta" />
+                    <label htmlFor="co-address" className={styles.label}>Address</label>
+                    <input id="co-address" className={styles.input} value={form.address} onChange={e => update('address', e.target.value)} placeholder="12 Rue Ibn Battuta" autoComplete="street-address" />
                   </div>
                   <div>
-                    <label className={styles.label}>City</label>
-                    <input className={styles.input} value={form.city} onChange={e => update('city', e.target.value)} placeholder="Casablanca" />
+                    <label htmlFor="co-city" className={styles.label}>City</label>
+                    <input id="co-city" className={styles.input} value={form.city} onChange={e => update('city', e.target.value)} placeholder="Casablanca" autoComplete="address-level2" />
                   </div>
                   <div>
-                    <label className={styles.label}>ZIP Code</label>
-                    <input className={styles.input} value={form.zip} onChange={e => update('zip', e.target.value)} placeholder="20000" />
+                    <label htmlFor="co-zip" className={styles.label}>ZIP Code</label>
+                    <input id="co-zip" className={styles.input} value={form.zip} onChange={e => update('zip', e.target.value)} placeholder="20000" autoComplete="postal-code" />
                   </div>
                 </div>
 
@@ -137,12 +137,13 @@ export default function CheckoutPage() {
                       onChange={e => setGiftMessage(e.target.checked ? ' ' : '')}
                       className={styles.giftCheckbox}
                     />
-                    <Gift size={15} />
+                    <Gift size={15} aria-hidden="true" />
                     <span>This is a gift — add a gift message</span>
                   </label>
                   {giftMessage !== '' && (
                     <textarea
                       autoFocus
+                      aria-label="Gift message"
                       className={styles.giftTextarea}
                       placeholder="Write your personal message for the recipient..."
                       value={giftMessage === ' ' ? '' : giftMessage}
@@ -205,16 +206,16 @@ export default function CheckoutPage() {
                 {form.paymentMethod === 'card' && (
                   <div className={styles.formGrid}>
                     <div className={styles.fullCol}>
-                      <label className={styles.label}>Card Number</label>
-                      <input className={styles.input} value={form.cardNumber} onChange={e => update('cardNumber', e.target.value)} placeholder="•••• •••• •••• ••••" maxLength={19} />
+                      <label htmlFor="co-card-number" className={styles.label}>Card Number</label>
+                      <input id="co-card-number" className={styles.input} value={form.cardNumber} onChange={e => update('cardNumber', e.target.value)} placeholder="•••• •••• •••• ••••" maxLength={19} autoComplete="cc-number" />
                     </div>
                     <div>
-                      <label className={styles.label}>Expiry</label>
-                      <input className={styles.input} value={form.cardExpiry} onChange={e => update('cardExpiry', e.target.value)} placeholder="MM/YY" maxLength={5} />
+                      <label htmlFor="co-card-expiry" className={styles.label}>Expiry</label>
+                      <input id="co-card-expiry" className={styles.input} value={form.cardExpiry} onChange={e => update('cardExpiry', e.target.value)} placeholder="MM/YY" maxLength={5} autoComplete="cc-exp" />
                     </div>
                     <div>
-                      <label className={styles.label}>CVV</label>
-                      <input className={styles.input} value={form.cardCvv} onChange={e => update('cardCvv', e.target.value)} placeholder="•••" maxLength={4} type="password" />
+                      <label htmlFor="co-card-cvv" className={styles.label}>CVV</label>
+                      <input id="co-card-cvv" className={styles.input} value={form.cardCvv} onChange={e => update('cardCvv', e.target.value)} placeholder="•••" maxLength={4} type="password" autoComplete="cc-csc" />
                     </div>
                   </div>
                 )}

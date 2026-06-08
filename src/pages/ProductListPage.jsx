@@ -128,16 +128,20 @@ export default function ProductListPage() {
           <button
             className={styles.filterToggle}
             onClick={() => setFiltersOpen(o => !o)}
+            aria-expanded={filtersOpen}
+            aria-controls="plp-filters"
           >
-            <SlidersHorizontal size={16} />
+            <SlidersHorizontal size={16} aria-hidden="true" />
             <span>Filter</span>
             {totalActiveFilters > 0 && (
-              <span className={styles.filterBadge}>{totalActiveFilters}</span>
+              <span className={styles.filterBadge} aria-label={`${totalActiveFilters} active filters`}>{totalActiveFilters}</span>
             )}
           </button>
 
           <div className={styles.toolbarRight}>
+            <label htmlFor="plp-sort" className="sr-only">Sort products</label>
             <select
+              id="plp-sort"
               className={styles.sortSelect}
               value={sort}
               onChange={e => setSort(e.target.value)}
@@ -146,18 +150,22 @@ export default function ProductListPage() {
                 <option key={o.value} value={o.value}>{o.label}</option>
               ))}
             </select>
-            <div className={styles.layoutToggle}>
+            <div className={styles.layoutToggle} role="group" aria-label="Product layout">
               <button
                 className={[styles.layoutBtn, layout === 'grid' ? styles.active : ''].join(' ')}
                 onClick={() => setLayout('grid')}
+                aria-label="Grid view"
+                aria-pressed={layout === 'grid'}
               >
-                <LayoutGrid size={16} />
+                <LayoutGrid size={16} aria-hidden="true" />
               </button>
               <button
                 className={[styles.layoutBtn, layout === 'list' ? styles.active : ''].join(' ')}
                 onClick={() => setLayout('list')}
+                aria-label="List view"
+                aria-pressed={layout === 'list'}
               >
-                <List size={16} />
+                <List size={16} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -172,8 +180,9 @@ export default function ProductListPage() {
                   key={`${key}-${v}`}
                   className={styles.activeFilter}
                   onClick={() => toggleFilter(key, v)}
+                  aria-label={`Remove ${v} filter`}
                 >
-                  {v} <X size={10} />
+                  {v} <X size={10} aria-hidden="true" />
                 </button>
               )) : null
             )}
@@ -185,11 +194,11 @@ export default function ProductListPage() {
 
         <div className={styles.body}>
           {/* Filters sidebar */}
-          <aside className={[styles.sidebar, filtersOpen ? styles.sidebarOpen : ''].join(' ')}>
+          <aside id="plp-filters" className={[styles.sidebar, filtersOpen ? styles.sidebarOpen : ''].join(' ')} aria-label="Product filters">
             <div className={styles.sidebarHead}>
               <span className={styles.sidebarTitle}>Filters</span>
-              <button onClick={() => setFiltersOpen(false)} className={styles.sidebarClose}>
-                <X size={18} />
+              <button onClick={() => setFiltersOpen(false)} className={styles.sidebarClose} aria-label="Close filters">
+                <X size={18} aria-hidden="true" />
               </button>
             </div>
 

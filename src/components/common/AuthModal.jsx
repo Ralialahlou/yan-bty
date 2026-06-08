@@ -29,29 +29,29 @@ export default function AuthModal() {
   return (
     <>
       <div className={styles.overlay} onClick={closeAuth} />
-      <div className={styles.modal}>
-        <button className={styles.closeBtn} onClick={closeAuth}><X size={20} /></button>
+      <div className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+        <button className={styles.closeBtn} onClick={closeAuth} aria-label="Close"><X size={20} aria-hidden="true" /></button>
 
         <div className={styles.header}>
           <Logo size="md" variant="red" linkTo="/" />
-          <h2 className={styles.title}>{mode === 'login' ? 'Welcome back' : 'Create an account'}</h2>
+          <h2 id="auth-modal-title" className={styles.title}>{mode === 'login' ? 'Welcome back' : 'Create an account'}</h2>
           <p className={styles.sub}>{mode === 'login' ? 'Sign in to your account' : 'Join the Yan BTY community'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {mode === 'register' && (
             <div className={styles.field}>
-              <label className={styles.label}>Full Name</label>
-              <input className={styles.input} value={form.name} onChange={e => update('name', e.target.value)} placeholder="Layla Benhaddou" required />
+              <label htmlFor="auth-name" className={styles.label}>Full Name</label>
+              <input id="auth-name" className={styles.input} value={form.name} onChange={e => update('name', e.target.value)} placeholder="Layla Benhaddou" required />
             </div>
           )}
           <div className={styles.field}>
-            <label className={styles.label}>Email Address</label>
-            <input className={styles.input} type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="you@example.com" required />
+            <label htmlFor="auth-email" className={styles.label}>Email Address</label>
+            <input id="auth-email" className={styles.input} type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="you@example.com" required />
           </div>
           <div className={styles.field}>
-            <label className={styles.label}>Password</label>
-            <input className={styles.input} type="password" value={form.password} onChange={e => update('password', e.target.value)} placeholder="••••••••" required />
+            <label htmlFor="auth-password" className={styles.label}>Password</label>
+            <input id="auth-password" className={styles.input} type="password" value={form.password} onChange={e => update('password', e.target.value)} placeholder="••••••••" required />
           </div>
           {mode === 'login' && (
             <button type="button" className={styles.forgotLink}>Forgot password?</button>

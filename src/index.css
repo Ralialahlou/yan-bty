@@ -145,6 +145,51 @@ ul, ol {
 }
 
 /* ============================================
+   ACCESSIBILITY UTILITIES
+   ============================================ */
+
+/* Skip-to-content link — hidden until focused */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-brown);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--color-tabla-red);
+  outline-offset: 2px;
+}
+
+/* Visible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-tabla-red);
+  outline-offset: 2px;
+}
+
+/* Visually hidden utility — for screen-reader-only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
    LAYOUT UTILITIES
    ============================================ */
 .container {

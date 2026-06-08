@@ -314,7 +314,7 @@ export default function Header() {
           <Logo size="md" />
 
           {/* Desktop nav — triggers activeMega only, no panel rendered here */}
-          <nav className={styles.nav}>
+          <nav className={styles.nav} aria-label="Main navigation">
             {navLinks.map(link => (
               <div
                 key={link.label}
@@ -328,9 +328,11 @@ export default function Header() {
                     link.highlight ? styles.navHighlight : '',
                     activeMega === link.label ? styles.navLinkActive : '',
                   ].join(' ')}
+                  aria-expanded={link.mega ? activeMega === link.label : undefined}
+                  aria-haspopup={link.mega ? 'true' : undefined}
                 >
                   {link.label}
-                  {link.mega && <ChevronDown size={11} className={[styles.chevron, activeMega === link.label ? styles.chevronOpen : ''].join(' ')} />}
+                  {link.mega && <ChevronDown size={11} className={[styles.chevron, activeMega === link.label ? styles.chevronOpen : ''].join(' ')} aria-hidden="true" />}
                 </Link>
               </div>
             ))}
@@ -347,9 +349,9 @@ export default function Header() {
             <button className={styles.iconBtn} onClick={() => user ? navigate('/account') : openAuth('login')} aria-label="Account">
               <User size={20} />
             </button>
-            <button className={styles.cartBtn} onClick={openCart} aria-label="Cart">
+            <button className={styles.cartBtn} onClick={openCart} aria-label={`Cart${itemCount > 0 ? `, ${itemCount} item${itemCount === 1 ? '' : 's'}` : ''}`}>
               <ShoppingBag size={20} />
-              {itemCount > 0 && <span className={styles.cartCount}>{itemCount}</span>}
+              {itemCount > 0 && <span className={styles.cartCount} aria-hidden="true">{itemCount}</span>}
             </button>
           </div>
         </div>
@@ -426,19 +428,21 @@ export default function Header() {
 
         {/* ── Search bar ── */}
         {searchOpen && (
-          <div className={styles.searchBar}>
+          <div className={styles.searchBar} role="search">
             <form onSubmit={handleSearch} className={styles.searchForm}>
-              <Search size={18} className={styles.searchIcon} />
+              <Search size={18} className={styles.searchIcon} aria-hidden="true" />
               <input
                 autoFocus
-                type="text"
+                id="site-search"
+                type="search"
+                aria-label="Search products, brands, and ingredients"
                 placeholder="Search products, brands, ingredients..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 className={styles.searchInput}
               />
-              <button type="button" onClick={() => setSearchOpen(false)} className={styles.searchClose}>
-                <X size={18} />
+              <button type="button" onClick={() => setSearchOpen(false)} className={styles.searchClose} aria-label="Close search">
+                <X size={18} aria-hidden="true" />
               </button>
             </form>
           </div>
@@ -448,16 +452,23 @@ export default function Header() {
       {/* ── Mobile drawer ── */}
       {mobileOpen && (
         <div className={styles.mobileOverlay} onClick={() => setMobileOpen(false)}>
-          <div className={styles.mobileDrawer} onClick={e => e.stopPropagation()}>
+          <div
+            className={styles.mobileDrawer}
+            onClick={e => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+          >
             <div className={styles.mobileHeader}>
               <Logo size="md" />
-              <button onClick={() => setMobileOpen(false)} className={styles.iconBtn}><X size={22} /></button>
+              <button onClick={() => setMobileOpen(false)} className={styles.iconBtn} aria-label="Close menu"><X size={22} aria-hidden="true" /></button>
             </div>
 
-            <div className={styles.mobileSearch}>
+            <div className={styles.mobileSearch} role="search">
               <form onSubmit={(e) => { e.preventDefault(); navigate(`/shop?search=${searchQuery}`); setMobileOpen(false); }}>
                 <input
-                  type="text"
+                  type="search"
+                  aria-label="Search products"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
@@ -466,7 +477,7 @@ export default function Header() {
               </form>
             </div>
 
-            <nav className={styles.mobileNav}>
+            <nav className={styles.mobileNav} aria-label="Mobile navigation">
               {[...navLinks, ...mobileOnlyLinks].map(link => (
                 <div key={link.label}>
                   <Link

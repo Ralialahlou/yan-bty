@@ -56,10 +56,13 @@ export default function Footer() {
           <p className={styles.newsletterLabel}>Stay in the know</p>
           <h3 className={styles.newsletterTitle}>Beauty delivered to your inbox.</h3>
           <form className={styles.newsletterForm} onSubmit={e => e.preventDefault()}>
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
             <input
+              id="newsletter-email"
               type="email"
               placeholder="Your email address"
               className={styles.newsletterInput}
+              autoComplete="email"
             />
             <button type="submit" className={styles.newsletterBtn}>Subscribe</button>
           </form>

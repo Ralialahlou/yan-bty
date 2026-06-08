@@ -27,13 +27,13 @@ export default function WishlistDrawer({ onClose }) {
   return (
     <>
       <div className={styles.overlay} onClick={onClose} />
-      <aside className={styles.drawer}>
+      <aside className={styles.drawer} role="dialog" aria-modal="true" aria-label="My Wishlists">
         <div className={styles.head}>
           <div className={styles.headLeft}>
-            <Heart size={18} className={styles.heartIcon} />
+            <Heart size={18} className={styles.heartIcon} aria-hidden="true" />
             <span>My Wishlists</span>
           </div>
-          <button onClick={onClose} className={styles.close}><X size={20} /></button>
+          <button onClick={onClose} className={styles.close} aria-label="Close wishlist"><X size={20} aria-hidden="true" /></button>
         </div>
 
         {/* List tabs */}
@@ -48,8 +48,8 @@ export default function WishlistDrawer({ onClose }) {
               <span className={styles.tabCount}>{wl.productIds.length}</span>
             </button>
           ))}
-          <button className={styles.newTabBtn} onClick={() => setCreatingNew(true)}>
-            <Plus size={13} />
+          <button className={styles.newTabBtn} onClick={() => setCreatingNew(true)} aria-label="Create new list">
+            <Plus size={13} aria-hidden="true" />
           </button>
         </div>
 
@@ -57,6 +57,7 @@ export default function WishlistDrawer({ onClose }) {
           <div className={styles.newListRow}>
             <input
               autoFocus
+              aria-label="New list name"
               className={styles.newListInput}
               value={newListName}
               onChange={e => setNewListName(e.target.value)}
@@ -64,7 +65,7 @@ export default function WishlistDrawer({ onClose }) {
               onKeyDown={e => e.key === 'Enter' && handleCreate()}
             />
             <button className={styles.newListSave} onClick={handleCreate}>Create</button>
-            <button className={styles.newListCancel} onClick={() => setCreatingNew(false)}><X size={14} /></button>
+            <button className={styles.newListCancel} onClick={() => setCreatingNew(false)} aria-label="Cancel"><X size={14} aria-hidden="true" /></button>
           </div>
         )}
 
@@ -91,15 +92,17 @@ export default function WishlistDrawer({ onClose }) {
                   <button
                     className={styles.itemAdd}
                     onClick={() => { addItem(product); onClose(); }}
+                    aria-label={`Add ${product.name} to bag`}
                   >
-                    <ShoppingBag size={12} /> Add to Bag
+                    <ShoppingBag size={12} aria-hidden="true" /> Add to Bag
                   </button>
                 </div>
                 <button
                   className={styles.itemRemove}
                   onClick={() => removeFromWishlist(product.id, currentList.id)}
+                  aria-label={`Remove ${product.name} from wishlist`}
                 >
-                  <X size={14} />
+                  <X size={14} aria-hidden="true" />
                 </button>
               </div>
             ))

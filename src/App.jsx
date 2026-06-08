@@ -38,7 +38,7 @@ function AppLayout() {
       <CartDrawer />
       <WishlistPicker />
       <AuthModal />
-      <main style={{ flex: 1 }}>
+      <main id="main-content" style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ProductListPage />} />

@@ -116,15 +116,15 @@ export default function AccountPage() {
           <p className={styles.authSub}>{isLogin ? 'Welcome back to Yan BTY' : 'Join the Yan BTY community'}</p>
           {isLogin ? (
             <form onSubmit={handleLogin} className={styles.authForm}>
-              <div><label className={styles.label}>Email</label><input className={styles.input} type="email" value={loginForm.email} onChange={e => setLoginForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" /></div>
-              <div><label className={styles.label}>Password</label><input className={styles.input} type="password" value={loginForm.password} onChange={e => setLoginForm(f => ({ ...f, password: e.target.value }))} placeholder="••••••••" /></div>
+              <div><label htmlFor="acc-login-email" className={styles.label}>Email</label><input id="acc-login-email" className={styles.input} type="email" value={loginForm.email} onChange={e => setLoginForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" autoComplete="email" /></div>
+              <div><label htmlFor="acc-login-pass" className={styles.label}>Password</label><input id="acc-login-pass" className={styles.input} type="password" value={loginForm.password} onChange={e => setLoginForm(f => ({ ...f, password: e.target.value }))} placeholder="••••••••" autoComplete="current-password" /></div>
               <Button variant="primary" fullWidth type="submit" size="lg">Sign In</Button>
             </form>
           ) : (
             <form onSubmit={handleRegister} className={styles.authForm}>
-              <div><label className={styles.label}>Name</label><input className={styles.input} value={registerForm.name} onChange={e => setRegisterForm(f => ({ ...f, name: e.target.value }))} placeholder="Your full name" /></div>
-              <div><label className={styles.label}>Email</label><input className={styles.input} type="email" value={registerForm.email} onChange={e => setRegisterForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" /></div>
-              <div><label className={styles.label}>Password</label><input className={styles.input} type="password" value={registerForm.password} onChange={e => setRegisterForm(f => ({ ...f, password: e.target.value }))} placeholder="••••••••" /></div>
+              <div><label htmlFor="acc-reg-name" className={styles.label}>Name</label><input id="acc-reg-name" className={styles.input} value={registerForm.name} onChange={e => setRegisterForm(f => ({ ...f, name: e.target.value }))} placeholder="Your full name" autoComplete="name" /></div>
+              <div><label htmlFor="acc-reg-email" className={styles.label}>Email</label><input id="acc-reg-email" className={styles.input} type="email" value={registerForm.email} onChange={e => setRegisterForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" autoComplete="email" /></div>
+              <div><label htmlFor="acc-reg-pass" className={styles.label}>Password</label><input id="acc-reg-pass" className={styles.input} type="password" value={registerForm.password} onChange={e => setRegisterForm(f => ({ ...f, password: e.target.value }))} placeholder="••••••••" autoComplete="new-password" /></div>
               <Button variant="primary" fullWidth type="submit" size="lg">Create Account</Button>
             </form>
           )}
@@ -191,20 +191,20 @@ export default function AccountPage() {
                   </div>
                   <div className={styles.formGrid}>
                     <div>
-                      <label className={styles.label}>First Name</label>
-                      <input className={styles.input} value={profileEdit.firstName} onChange={e => setProfileEdit(p => ({ ...p, firstName: e.target.value }))} placeholder="Layla" />
+                      <label htmlFor="prof-first-name" className={styles.label}>First Name</label>
+                      <input id="prof-first-name" className={styles.input} value={profileEdit.firstName} onChange={e => setProfileEdit(p => ({ ...p, firstName: e.target.value }))} placeholder="Layla" autoComplete="given-name" />
                     </div>
                     <div>
-                      <label className={styles.label}>Last Name</label>
-                      <input className={styles.input} value={profileEdit.lastName} onChange={e => setProfileEdit(p => ({ ...p, lastName: e.target.value }))} placeholder="Benhaddou" />
+                      <label htmlFor="prof-last-name" className={styles.label}>Last Name</label>
+                      <input id="prof-last-name" className={styles.input} value={profileEdit.lastName} onChange={e => setProfileEdit(p => ({ ...p, lastName: e.target.value }))} placeholder="Benhaddou" autoComplete="family-name" />
                     </div>
                     <div>
-                      <label className={styles.label}>Email Address</label>
-                      <input className={styles.input} type="email" value={user.email} readOnly disabled />
+                      <label htmlFor="prof-email" className={styles.label}>Email Address</label>
+                      <input id="prof-email" className={styles.input} type="email" value={user.email} readOnly disabled autoComplete="email" />
                     </div>
                     <div>
-                      <label className={styles.label}>Gender</label>
-                      <select className={styles.input} value={profileEdit.gender} onChange={e => setProfileEdit(p => ({ ...p, gender: e.target.value }))}>
+                      <label htmlFor="prof-gender" className={styles.label}>Gender</label>
+                      <select id="prof-gender" className={styles.input} value={profileEdit.gender} onChange={e => setProfileEdit(p => ({ ...p, gender: e.target.value }))}>
                         <option value="">Prefer not to say</option>
                         <option value="female">Female</option>
                         <option value="male">Male</option>
@@ -212,12 +212,12 @@ export default function AccountPage() {
                       </select>
                     </div>
                     <div>
-                      <label className={styles.label}>Date of Birth</label>
-                      <input className={styles.input} type="date" value={profileEdit.birthday} onChange={e => setProfileEdit(p => ({ ...p, birthday: e.target.value }))} />
+                      <label htmlFor="prof-dob" className={styles.label}>Date of Birth</label>
+                      <input id="prof-dob" className={styles.input} type="date" value={profileEdit.birthday} onChange={e => setProfileEdit(p => ({ ...p, birthday: e.target.value }))} autoComplete="bday" />
                     </div>
                     <div>
-                      <label className={styles.label}>Phone Number</label>
-                      <input className={styles.input} placeholder="+212 6 00 00 00 00" />
+                      <label htmlFor="prof-phone" className={styles.label}>Phone Number</label>
+                      <input id="prof-phone" className={styles.input} placeholder="+212 6 00 00 00 00" autoComplete="tel" />
                     </div>
                   </div>
                   <div className={styles.profileActions}>
@@ -522,6 +522,7 @@ function WishlistManager() {
         <div className={styles.wlNewForm}>
           <input
             autoFocus
+            aria-label="New list name"
             className={styles.input}
             value={newName}
             onChange={e => setNewName(e.target.value)}
@@ -723,18 +724,18 @@ function ReviewForm({ item, onSubmit, onCancel }) {
       </div>
 
       <div>
-        <label className={styles.label}>Review Title</label>
-        <input className={styles.input} value={title} onChange={e => setTitle(e.target.value)} placeholder="Sum up your review in a sentence..." required />
+        <label htmlFor="review-title" className={styles.label}>Review Title</label>
+        <input id="review-title" className={styles.input} value={title} onChange={e => setTitle(e.target.value)} placeholder="Sum up your review in a sentence..." required />
       </div>
 
       <div>
-        <label className={styles.label}>Your Review</label>
-        <textarea className={styles.reviewTextarea} value={text} onChange={e => setText(e.target.value)} placeholder="Tell us what you think — what you loved, what you'd improve, and who you'd recommend it to..." rows={4} required />
+        <label htmlFor="review-text" className={styles.label}>Your Review</label>
+        <textarea id="review-text" className={styles.reviewTextarea} value={text} onChange={e => setText(e.target.value)} placeholder="Tell us what you think — what you loved, what you'd improve, and who you'd recommend it to..." rows={4} required />
       </div>
 
       <div>
-        <label className={styles.label}>Skin Type</label>
-        <select className={styles.input} value={skinType} onChange={e => setSkinType(e.target.value)}>
+        <label htmlFor="review-skin-type" className={styles.label}>Skin Type</label>
+        <select id="review-skin-type" className={styles.input} value={skinType} onChange={e => setSkinType(e.target.value)}>
           <option value="">Select...</option>
           {['Normal', 'Dry', 'Oily', 'Combination', 'Sensitive'].map(s => <option key={s} value={s}>{s}</option>)}
         </select>
@@ -755,26 +756,26 @@ function AddressForm({ form, setForm, onSave, onCancel, isNew }) {
       <h3 className={styles.addrFormTitle}>{isNew ? 'Add New Address' : 'Edit Address'}</h3>
       <div className={styles.addrFormGrid}>
         <div>
-          <label className={styles.label}>Label</label>
-          <select className={styles.input} value={form.label} onChange={e => update('label', e.target.value)}>
+          <label htmlFor="addr-label" className={styles.label}>Label</label>
+          <select id="addr-label" className={styles.input} value={form.label} onChange={e => update('label', e.target.value)}>
             {['Home', 'Work', 'Other'].map(l => <option key={l} value={l}>{l}</option>)}
           </select>
         </div>
         <div>
-          <label className={styles.label}>Full Name</label>
-          <input className={styles.input} value={form.name} onChange={e => update('name', e.target.value)} placeholder="Full name" />
+          <label htmlFor="addr-name" className={styles.label}>Full Name</label>
+          <input id="addr-name" className={styles.input} value={form.name} onChange={e => update('name', e.target.value)} placeholder="Full name" autoComplete="name" />
         </div>
         <div className={styles.addrFullCol}>
-          <label className={styles.label}>Address Line</label>
-          <input className={styles.input} value={form.line1} onChange={e => update('line1', e.target.value)} placeholder="Street address" />
+          <label htmlFor="addr-line1" className={styles.label}>Address Line</label>
+          <input id="addr-line1" className={styles.input} value={form.line1} onChange={e => update('line1', e.target.value)} placeholder="Street address" autoComplete="street-address" />
         </div>
         <div>
-          <label className={styles.label}>City</label>
-          <input className={styles.input} value={form.city} onChange={e => update('city', e.target.value)} placeholder="Casablanca" />
+          <label htmlFor="addr-city" className={styles.label}>City</label>
+          <input id="addr-city" className={styles.input} value={form.city} onChange={e => update('city', e.target.value)} placeholder="Casablanca" autoComplete="address-level2" />
         </div>
         <div>
-          <label className={styles.label}>ZIP Code</label>
-          <input className={styles.input} value={form.zip} onChange={e => update('zip', e.target.value)} placeholder="20000" />
+          <label htmlFor="addr-zip" className={styles.label}>ZIP Code</label>
+          <input id="addr-zip" className={styles.input} value={form.zip} onChange={e => update('zip', e.target.value)} placeholder="20000" autoComplete="postal-code" />
         </div>
       </div>
       <div className={styles.addrFormActions}>
