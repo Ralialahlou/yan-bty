@@ -103,7 +103,7 @@ export const categories = [
   },
   {
     id: 'fragrance', name: 'Fragrance', slug: 'fragrance',
-    image: 'https://images.unsplash.com/photo-1600185365778-ba35d44d1b0d?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80',
     subcategories: ['Eau de Parfum', 'Eau de Toilette', 'Body Mist', 'Candles', 'Diffusers'],
     groups: [
       {

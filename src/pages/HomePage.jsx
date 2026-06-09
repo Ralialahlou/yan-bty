@@ -137,6 +137,9 @@ export default function HomePage() {
 
       {/* ═══ YAN & ONE — deep plum ═══ */}
       <section className={styles.yanOneSection}>
+        <div className={styles.yanOneBg} aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=1400&q=85" alt="" />
+        </div>
         <Sparkles count={14} />
         <div className={styles.yanOneTextCol} data-reveal>
           <p className={styles.yanOneEyebrow}>✦ Our Signature Collection</p>
