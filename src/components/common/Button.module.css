@@ -64,13 +64,13 @@
 }
 
 .accent {
-  background: linear-gradient(135deg, var(--color-deep-rose,#8b2252), var(--color-rose,#c96882));
+  background: linear-gradient(135deg, var(--color-tabla-red,#b25745), var(--color-sec-terracotta,#c85838));
   color: var(--color-white);
   border: none;
 }
 
 .accent:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--color-rose,#c96882), var(--color-deep-rose,#8b2252));
+  background: linear-gradient(135deg, var(--color-sec-terracotta,#c85838), var(--color-tabla-red,#b25745));
   border: none;
   transform: translateY(-1px);
 }

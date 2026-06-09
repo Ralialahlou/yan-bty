@@ -47,6 +47,16 @@
   --color-champagne:  #e8d098;
   --color-gold-light: #f5e6c0;
 
+  /* ── Brand Secondary Palette ── */
+  --color-sec-blush:       #f2c8b4;   /* warm peach-blush */
+  --color-sec-dusty-rose:  #c09080;   /* muted dusty rose */
+  --color-sec-deep-rose:   #8c4050;   /* deep dusty rose */
+  --color-sec-terracotta:  #c85838;   /* warm terracotta */
+  --color-sec-sage:        #8a9870;   /* soft sage green */
+  --color-sec-lavender:    #c4a0c0;   /* gentle lilac */
+  --color-sec-amber:       #d0b030;   /* warm amber */
+  --color-sec-teal:        #3c9090;   /* Moroccan teal */
+
   /* ── Semantic UI tokens ── */
   --color-bg:           var(--color-white);
   --color-bg-soft:      var(--color-light-taupe);

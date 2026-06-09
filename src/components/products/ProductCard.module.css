@@ -10,7 +10,7 @@
 .card:hover .quickAdd { opacity: 1; transform: translateY(0); }
 .card:hover .image { transform: scale(1.05); }
 .card:hover .imageWrap {
-  box-shadow: 0 12px 36px rgba(201,104,130,0.22);
+  box-shadow: 0 12px 36px rgba(178,87,69,0.22);
 }
 
 .imageWrap {
@@ -64,19 +64,19 @@
   z-index: 1;
 }
 .wishlistBtn:hover {
-  color: var(--color-rose, #c96882);
-  box-shadow: 0 0 12px rgba(201,104,130,0.35);
+  color: var(--color-tabla-red, #b25745);
+  box-shadow: 0 0 12px rgba(178,87,69,0.35);
   transform: scale(1.1);
 }
 .wishlisted {
-  color: var(--color-rose, #c96882) !important;
-  box-shadow: 0 0 8px rgba(201,104,130,0.25);
+  color: var(--color-tabla-red, #b25745) !important;
+  box-shadow: 0 0 8px rgba(178,87,69,0.25);
 }
 
 .quickAdd {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(135deg, var(--color-deep-rose, #8b2252), var(--color-rose, #c96882));
+  background: linear-gradient(135deg, var(--color-brown, #332114), var(--color-tabla-red, #b25745));
   color: white;
   font-size: 11px; font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-wide); text-transform: uppercase;
@@ -103,7 +103,7 @@
 .brand {
   font-size: 10px; font-weight: var(--font-weight-semibold);
   letter-spacing: var(--tracking-wide); text-transform: uppercase;
-  color: var(--color-rose, #c96882);
+  color: var(--color-tabla-red, #b25745);
 }
 
 .name {
@@ -129,7 +129,7 @@
 
 .price {
   font-size: 14px; font-weight: var(--font-weight-medium);
-  background: linear-gradient(135deg, var(--color-deep-rose, #8b2252), var(--color-rose, #c96882));
+  background: linear-gradient(135deg, var(--color-brown, #332114), var(--color-tabla-red, #b25745));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   margin-top: 4px;
 }

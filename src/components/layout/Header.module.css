@@ -5,10 +5,8 @@
 
 /* Promo bar */
 .promoBar {
-  background: linear-gradient(90deg, var(--color-plum,#3d1545), var(--color-deep-rose,#8b2252), var(--color-plum,#3d1545));
-  background-size: 200% auto;
-  animation: gradientShift 8s ease-in-out infinite;
-  color: var(--color-champagne, #e8d098);
+  background: var(--color-tabla-red, #b25745);
+  color: var(--color-light-tabla-red, #d4a391);
   text-align: center;
   font-size: 11px;
   font-weight: 400;
@@ -70,13 +68,10 @@
 .navLinkActive { color: var(--color-brown); }
 
 .navHighlight {
-  background: linear-gradient(135deg, var(--color-deep-rose,#8b2252), var(--color-rose,#c96882));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-tabla-red, #b25745);
 }
 .navHighlight:hover {
-  -webkit-text-fill-color: var(--color-deep-rose,#8b2252);
+  color: var(--color-sec-deep-rose, #8c4050);
 }
 
 .chevron {
