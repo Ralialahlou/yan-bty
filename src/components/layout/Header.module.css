@@ -333,6 +333,10 @@
   letter-spacing: 0.02em;
 }
 .searchInput::placeholder { color: var(--color-text-muted); }
+.searchInput:focus-visible {
+  outline: 2px solid var(--color-tabla-red);
+  outline-offset: 2px;
+}
 .searchClose { color: var(--color-text-muted); padding: 4px; transition: color var(--transition-fast); }
 .searchClose:hover { color: var(--color-brown); }
 
@@ -374,6 +378,10 @@
   border: 1px solid var(--color-border); border-radius: var(--radius-sm);
   padding: 10px 14px; font-size: 14px; outline: none;
   background: var(--color-bg-soft);
+}
+.mobileSearchInput:focus-visible {
+  outline: 2px solid var(--color-tabla-red);
+  outline-offset: 2px;
 }
 .mobileNav { flex: 1; padding: 8px 0; }
 .mobileNavLink {

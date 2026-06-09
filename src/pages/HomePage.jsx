@@ -85,12 +85,8 @@ export default function HomePage() {
             Morocco's premium multi-brand beauty destination. Discover established icons and future favourites.
           </p>
           <div className={styles.heroCtas}>
-            <Link to="/shop">
-              <button className={styles.heroGoldBtn}>Shop Now <ArrowRight size={15} /></button>
-            </Link>
-            <Link to="/brand/yan-one">
-              <button className={styles.heroGhostBtn}>Explore Yan&One <ArrowRight size={15} /></button>
-            </Link>
+            <Link to="/shop" className={styles.heroGoldBtn}>Shop Now <ArrowRight size={15} /></Link>
+            <Link to="/brand/yan-one" className={styles.heroGhostBtn}>Explore Yan&amp;One <ArrowRight size={15} /></Link>
           </div>
           <div className={styles.heroDecor1} aria-hidden="true">BE YOU</div>
           <div className={styles.heroDecor2} aria-hidden="true">YAN BTY</div>
@@ -129,7 +125,7 @@ export default function HomePage() {
               <Link key={cat.id} to={`/shop/${cat.slug}`} className={styles.catCard}
                 data-reveal style={{ transitionDelay: `${i * 70}ms` }}>
                 <div className={styles.catImgWrap}>
-                  <img src={cat.image} alt={cat.name} className={styles.catImg} loading="lazy" />
+                  <img src={cat.image} alt="" role="presentation" className={styles.catImg} loading="lazy" />
                   <div className={styles.catImgOverlay} />
                   <span className={styles.catLabel}>{cat.name}</span>
                 </div>
@@ -155,9 +151,7 @@ export default function HomePage() {
               <span key={f} className={styles.yanOnePill}>{f}</span>
             ))}
           </div>
-          <Link to="/brand/yan-one">
-            <button className={styles.yanOneGoldBtn}>Shop Yan&One <ArrowRight size={16} /></button>
-          </Link>
+          <Link to="/brand/yan-one" className={styles.yanOneGoldBtn}>Shop Yan&amp;One <ArrowRight size={16} /></Link>
         </div>
         <div className={styles.yanOneScrollWrap}>
           <div className={styles.yanOneTrack}>
@@ -254,9 +248,7 @@ export default function HomePage() {
             {editorsPicks.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
           <div className={styles.editorCta} data-reveal>
-            <Link to="/shop?filter=editors">
-              <button className={styles.goldOutlineBtn}>View All Picks <ArrowRight size={14} /></button>
-            </Link>
+            <Link to="/shop?filter=editors" className={styles.goldOutlineBtn}>View All Picks <ArrowRight size={14} /></Link>
           </div>
         </div>
       </section>
@@ -324,9 +316,7 @@ export default function HomePage() {
           <p className={styles.profileBody}>
             Tell us your skin type, concerns, and preferences — we'll surface products that are truly "Good For You" and build your ideal routine.
           </p>
-          <Link to="/account/beauty-profile">
-            <button className={styles.roseBtn}>Take the Beauty Quiz <ArrowRight size={14} /></button>
-          </Link>
+          <Link to="/account/beauty-profile" className={styles.roseBtn}>Take the Beauty Quiz <ArrowRight size={14} /></Link>
         </div>
       </section>
 
@@ -349,9 +339,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <Link to="/account">
-              <button className={styles.heroGoldBtn}>Join Now — It's Free</button>
-            </Link>
+            <Link to="/account" className={styles.heroGoldBtn}>Join Now — It's Free</Link>
           </div>
         </div>
       </section>
