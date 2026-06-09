@@ -352,11 +352,12 @@
 }
 
 .yanOneHeadline {
-  font-size:clamp(48px,7vw,88px); font-weight:var(--font-weight-extralight);
+  font-size:clamp(36px,6vw,80px); font-weight:var(--font-weight-extralight);
   letter-spacing:var(--tracking-wide); text-transform:uppercase;
   background: linear-gradient(135deg, #fff 0%, #e8d098 50%, #c4933f 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  line-height:1;
+  line-height:1.15;
+  padding-bottom:0.1em;
 }
 .yanOneAmpersand {
   background: linear-gradient(135deg, #c4933f, #f5e6c0);

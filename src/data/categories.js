@@ -1,7 +1,7 @@
 export const categories = [
   {
     id: 'makeup', name: 'Makeup', slug: 'makeup',
-    image: '/images/cat-makeup.png',
+    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80',
     subcategories: ['Foundation', 'Concealer', 'Blush', 'Bronzer', 'Eyeshadow', 'Mascara', 'Lipstick', 'Lip Gloss', 'Eyeliner', 'Setting Spray'],
     groups: [
       {
@@ -55,7 +55,7 @@ export const categories = [
   },
   {
     id: 'skincare', name: 'Skincare', slug: 'skincare',
-    image: '/images/cat-skincare.png',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80',
     subcategories: ['Cleanser', 'Toner', 'Serum', 'Moisturiser', 'Eye Cream', 'Face Mask', 'SPF', 'Exfoliator'],
     groups: [
       {
@@ -103,7 +103,7 @@ export const categories = [
   },
   {
     id: 'fragrance', name: 'Fragrance', slug: 'fragrance',
-    image: '/images/cat-scents.png',
+    image: 'https://images.unsplash.com/photo-1600185365778-ba35d44d1b0d?w=600&q=80',
     subcategories: ['Eau de Parfum', 'Eau de Toilette', 'Body Mist', 'Candles', 'Diffusers'],
     groups: [
       {
@@ -144,7 +144,7 @@ export const categories = [
   },
   {
     id: 'haircare', name: 'Hair Care', slug: 'haircare',
-    image: '/images/cat-haircare.png',
+    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80',
     subcategories: ['Shampoo', 'Conditioner', 'Hair Mask', 'Styling', 'Hair Oil', 'Scalp Care'],
     groups: [
       {
@@ -179,7 +179,7 @@ export const categories = [
   },
   {
     id: 'bodycare', name: 'Body Care', slug: 'bodycare',
-    image: '/images/cat-bodycare.png',
+    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80',
     subcategories: ['Body Lotion', 'Body Scrub', 'Body Oil', 'Hand Cream', 'Bath & Shower'],
     groups: [
       {
@@ -211,7 +211,7 @@ export const categories = [
       },
     ],
   },
-  { id: 'suncare', name: 'Sun Care', slug: 'suncare', image: '/images/cat-suncare.png', subcategories: ['SPF Face', 'SPF Body', 'After Sun', 'Self Tan'] },
+  { id: 'suncare', name: 'Sun Care', slug: 'suncare', image: 'https://images.unsplash.com/photo-1617897903246-719242758050?w=600&q=80', subcategories: ['SPF Face', 'SPF Body', 'After Sun', 'Self Tan'] },
   {
     id: 'yan-one', name: 'Yan&One', slug: 'yan-one',
     image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80',

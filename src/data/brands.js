@@ -11,6 +11,7 @@ export const brands = [
   { id: 'fenty', name: 'Fenty Beauty', slug: 'fenty-beauty', isOwn: false, logo: null, tagline: 'Beauty for all', color: '#c2410c' },
   { id: 'drunk-elephant', name: 'Drunk Elephant', slug: 'drunk-elephant', isOwn: false, logo: null, tagline: 'Clean-compatible skincare', color: '#f97316' },
   { id: 'the-ordinary', name: 'The Ordinary', slug: 'the-ordinary', isOwn: false, logo: null, tagline: 'Clinical formulations', color: '#374151' },
+  { id: 'lancome', name: 'Lancôme', slug: 'lancome', isOwn: false, logo: null, tagline: 'The art of French beauty', color: '#d4a0a0' },
 ];
 
 export const getBrandById = (id) => brands.find(b => b.id === id);

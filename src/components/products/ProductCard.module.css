@@ -85,7 +85,6 @@
   opacity: 0; transform: translateY(100%);
   transition: all var(--transition-base);
   z-index: 1;
-  position: relative;
   overflow: hidden;
 }
 .quickAdd::after {
