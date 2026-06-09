@@ -298,7 +298,7 @@ export default function HomePage() {
                 </div>
                 <div className={styles.journalInfo}>
                   <h3 className={styles.journalTitle}>{a.title}</h3>
-                  {i === 0 && <p className={styles.journalExcerpt}>{a.excerpt}</p>}
+                  <p className={styles.journalExcerpt}>{a.excerpt}</p>
                   <span className={styles.journalMeta}>{a.readTime} · {a.author}</span>
                 </div>
               </Link>
