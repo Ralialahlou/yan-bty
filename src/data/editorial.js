@@ -138,7 +138,7 @@ export const editorialArticles = [
     id: 'ed-003',
     title: 'Autumn Beauty Guide 2025',
     category: 'Seasonal Guides',
-    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80',
     readTime: '10 min read',
     date: '2025-10-01',
     excerpt: 'Transition your beauty routine as the seasons change — the products and looks to covet this autumn.',
