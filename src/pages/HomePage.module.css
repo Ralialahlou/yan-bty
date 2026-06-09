@@ -761,3 +761,21 @@
   font-size:10px; font-weight:var(--font-weight-medium);
   letter-spacing:0.05em; text-transform:uppercase; color:rgba(232,208,152,0.45);
 }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .heroSlide { animation: none !important; }
+  .heroSlide:nth-child(1) { opacity: 1; }
+  .heroLineGold { animation: none !important; }
+  .heroGoldBtn, .heroGoldBtn::after,
+  .yanOneGoldBtn, .yanOneGoldBtn::after,
+  .roseBtn, .roseBtn::after,
+  .goldOutlineBtn, .goldOutlineBtn::after { animation: none !important; }
+  .heroEyebrow, .heroLine, .heroSub, .heroCtas { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .marqueeStrip { animation: none !important; }
+  .marqueeTrack { animation: none !important; }
+  .sparkle { animation: none !important; }
+  .scrollCue::before { animation: none !important; }
+  .scrollChevron { animation: none !important; }
+}
