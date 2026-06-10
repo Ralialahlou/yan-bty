@@ -339,7 +339,7 @@
 .yanOneSection {
   position:relative;
   display:grid; grid-template-columns:1fr;
-  background: linear-gradient(135deg, var(--color-brown,#332114) 0%, #1e0f05 100%);
+  background: var(--color-brown,#332114);
   overflow:hidden;
 }
 @media (min-width:1024px) { .yanOneSection { grid-template-columns:420px 1fr; min-height:600px; } }
@@ -728,7 +728,7 @@
 /* ── LOYALTY ── */
 .loyaltySection {
   position:relative; padding:100px 0;
-  background:linear-gradient(160deg, var(--color-brown,#332114) 0%, #1e0f05 60%, var(--color-brown,#332114) 100%);
+  background: var(--color-brown,#332114);
   text-align:center; overflow:hidden;
 }
 

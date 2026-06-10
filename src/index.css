@@ -37,16 +37,6 @@
   --color-white:           #ffffff;
   --color-black:           #000000;
 
-  /* ── Charlotte Tilbury-inspired palette ── */
-  --color-midnight:   #100818;
-  --color-plum:       #3d1545;
-  --color-deep-rose:  #8b2252;
-  --color-rose:       #c96882;
-  --color-blush:      #f0c8d4;
-  --color-gold:       #c4933f;
-  --color-champagne:  #e8d098;
-  --color-gold-light: #f5e6c0;
-
   /* ── Brand Secondary Palette ── */
   --color-sec-blush:       #f2c8b4;   /* warm peach-blush */
   --color-sec-dusty-rose:  #c09080;   /* muted dusty rose */

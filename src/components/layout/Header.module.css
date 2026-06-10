@@ -71,7 +71,7 @@
   color: var(--color-tabla-red, #b25745);
 }
 .navHighlight:hover {
-  color: var(--color-sec-deep-rose, #8c4050);
+  color: var(--color-brown, #332114);
 }
 
 .chevron {

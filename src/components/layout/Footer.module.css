@@ -6,7 +6,7 @@
 
 /* Newsletter */
 .top {
-  background: linear-gradient(135deg, var(--color-tabla-red,#b25745), #5c1e0e);
+  background: linear-gradient(135deg, var(--color-tabla-red,#b25745), var(--color-brown,#332114));
   padding: 40px var(--container-padding);
 }
 
