@@ -1,9 +1,11 @@
+const B = import.meta.env.BASE_URL;
+
 export const editorialArticles = [
   {
     id: 'ed-001',
     title: 'The Perfect AM Skincare Routine',
     category: 'Skincare Routines',
-    image: 'https://images.unsplash.com/photo-1556228852-6d35a585d566?w=800&q=80',
+    image: `${B}images/journal-skincare.jpg`,
     readTime: '5 min read',
     date: '2025-11-20',
     excerpt: 'Master the morning ritual that transforms your skin — from cleanser to SPF, every step explained.',
@@ -16,7 +18,7 @@ export const editorialArticles = [
     id: 'ed-002',
     title: 'The Power of Niacinamide',
     category: 'Ingredient Deep Dives',
-    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&q=80',
+    image: `${B}images/journal-ingredients.jpg`,
     readTime: '7 min read',
     date: '2025-11-15',
     excerpt: 'Why niacinamide is the ingredient everyone needs, no matter your skin type.',
@@ -138,7 +140,7 @@ export const editorialArticles = [
     id: 'ed-003',
     title: 'Autumn Beauty Guide 2025',
     category: 'Seasonal Guides',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80',
+    image: `${B}images/journal-autumn.jpg`,
     readTime: '10 min read',
     date: '2025-10-01',
     excerpt: 'Transition your beauty routine as the seasons change — the products and looks to covet this autumn.',

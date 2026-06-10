@@ -40,10 +40,11 @@ function Sparkles({ count = 12, className = '' }) {
   );
 }
 
+const B = import.meta.env.BASE_URL;
 const HERO_IMAGES = [
-  'https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=2000&q=90',
-  'https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=2000&q=90',
-  'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=2000&q=90',
+  `${B}images/hero-1.jpg`,
+  `${B}images/hero-2.jpg`,
+  `${B}images/hero-3.jpg`,
 ];
 
 export default function HomePage() {
@@ -138,7 +139,7 @@ export default function HomePage() {
       {/* ═══ YAN & ONE — deep plum ═══ */}
       <section className={styles.yanOneSection}>
         <div className={styles.yanOneBg} aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=1400&q=85" alt="" />
+          <img src={`${B}images/yanone-bg.jpg`} alt="" />
         </div>
         <Sparkles count={14} />
         <div className={styles.yanOneTextCol} data-reveal>
@@ -205,7 +206,7 @@ export default function HomePage() {
       {/* ═══ EDITORIAL SPLIT ═══ */}
       <section className={styles.editorialSplit}>
         <div className={styles.editorialImg} data-reveal>
-          <img src="https://images.unsplash.com/photo-1614530291012-b6b3d1ca1f07?w=1200&q=85"
+          <img src={`${B}images/editorial-portrait.jpg`}
             alt="The Art of Moroccan Beauty" loading="lazy" />
           <div className={styles.editorialImgOverlay} />
         </div>
@@ -311,7 +312,7 @@ export default function HomePage() {
       {/* ═══ BEAUTY PROFILE ═══ */}
       <section className={styles.profileSection}>
         <div className={styles.profileVisual}>
-          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=85"
+          <img src={`${B}images/profile-model.jpg`}
             alt="Your beauty profile" loading="lazy" />
         </div>
         <div className={styles.profileText} data-reveal>
