@@ -323,17 +323,27 @@
 
 .catImgOverlay {
   position:absolute; inset:0;
-  background: linear-gradient(to bottom, transparent 20%, rgba(51,33,20,0.7) 100%);
-  opacity:0.45; transition:opacity var(--transition-base);
+  background: linear-gradient(to bottom, transparent 35%, rgba(51,33,20,0.82) 100%);
+  opacity:0.55; transition:opacity var(--transition-base);
 }
+.catCard:hover .catImgOverlay { opacity:0.75; }
 
 .catLabel {
-  position:absolute; bottom:12px; left:0; right:0; text-align:center;
+  position:absolute; bottom:0; left:0; right:0;
+  padding:28px 12px 12px;
+  display:flex; align-items:center; justify-content:space-between; gap:6px;
   font-size:10px; font-weight:var(--font-weight-semibold);
   letter-spacing:var(--tracking-wider); text-transform:uppercase;
   color:white; transition:all var(--transition-base);
-  text-shadow:0 1px 8px rgba(0,0,0,0.6);
 }
+.catLabel::after {
+  content:'→';
+  font-size:12px; opacity:0;
+  transform:translateX(-6px);
+  transition:opacity var(--transition-base), transform var(--transition-base);
+  flex-shrink:0;
+}
+.catCard:hover .catLabel::after { opacity:1; transform:translateX(0); }
 
 /* ── YAN & ONE — YB Brown ── */
 .yanOneSection {
@@ -341,6 +351,14 @@
   display:grid; grid-template-columns:1fr;
   background: var(--color-brown,#332114);
   overflow:hidden;
+}
+/* SVG fractal noise — Nature Distilled artisan grain */
+.yanOneSection::before {
+  content:'';
+  position:absolute; inset:0; z-index:1;
+  pointer-events:none;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 @media (min-width:1024px) { .yanOneSection { grid-template-columns:420px 1fr; min-height:600px; } }
 
@@ -486,12 +504,40 @@
 .yanOneSeeAllTitle { font-size:22px; font-weight:var(--font-weight-extralight); letter-spacing:var(--tracking-wide); text-transform:uppercase; color:white; line-height:1; }
 .yanOneSeeAll > * { display:flex; flex-direction:column; align-items:center; gap:8px; color:white; padding:20px; }
 
-/* ── SHARED SECTION TOKENS ── */
-.productSection { padding:72px 0; background:var(--color-white); }
-.newSection     { padding:72px 0; background:var(--color-sec-blush,#f2c8b4); }
+/* ── EDITORIAL RULE-LINE DECORATIONS ──
+ * A short ruled line above every section eyebrow adds the
+ * editorial "trusted curator" tone described in §54 of the guidelines.
+ * Applied to both light-section and dark-section label variants.
+ */
+.secLabel::before,
+.secLabelRose::before,
+.secLabelGold::before,
+.secLabelLight::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+.yanOneEyebrow::before,
+.loyaltyEyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  margin-bottom: 10px;
+}
 
-.secHeader       { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; gap:16px; }
-.secHeaderCenter { text-align:center; margin-bottom:40px; }
+/* ── SHARED SECTION TOKENS ── */
+.productSection { padding:88px 0; background:var(--color-white); }
+.newSection     { padding:88px 0; background:var(--color-sec-blush,#f2c8b4); }
+
+.secHeader       { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:44px; gap:16px; }
+.secHeaderCenter { text-align:center; margin-bottom:48px; }
 
 .secLabel {
   font-size:10px; font-weight:var(--font-weight-semibold);
@@ -515,12 +561,12 @@
 }
 
 .secTitle {
-  font-size:clamp(24px,3.5vw,40px); font-weight:var(--font-weight-extralight);
+  font-size:clamp(28px,4vw,52px); font-weight:var(--font-weight-extralight);
   letter-spacing:var(--tracking-wide); text-transform:uppercase;
   color:var(--color-brown); line-height:1;
 }
 .secTitleLight {
-  font-size:clamp(24px,3.5vw,40px); font-weight:var(--font-weight-extralight);
+  font-size:clamp(28px,4vw,52px); font-weight:var(--font-weight-extralight);
   letter-spacing:var(--tracking-wide); text-transform:uppercase;
   background:linear-gradient(135deg, #fff 0%, var(--color-light-tabla-red,#d4a391) 60%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
@@ -584,7 +630,7 @@
 .editorSection {
   position:relative;
   background: var(--color-medium-taupe,#ebdecc);
-  padding:80px 0;
+  padding:96px 0;
   overflow:hidden;
 }
 
@@ -617,7 +663,7 @@
 }
 
 /* ── BRANDS ── */
-.brandsSection { padding:64px 0; background:var(--color-light-taupe); }
+.brandsSection { padding:80px 0; background:var(--color-light-taupe); }
 
 .brandsTrack {
   display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
@@ -648,20 +694,35 @@
 }
 
 /* ── BEAUTY JOURNAL ── */
-.journalSection { padding:72px 0; background:var(--color-white); }
+.journalSection { padding:88px 0; background:var(--color-white); }
 
 .journalGrid { display:grid; grid-template-columns:1fr; gap:20px; }
-@media (min-width:768px) { .journalGrid { grid-template-columns:2fr 1fr 1fr; gap:20px; } }
-@media (min-width:768px) { .journalCardFeat .journalImg { height:320px; } }
+@media (min-width:768px) { .journalGrid { grid-template-columns:2fr 1fr 1fr; gap:24px; } }
+@media (min-width:768px) { .journalCardFeat .journalImg { height:280px; } }
 
 .journalCard {
+  position:relative;
   display:flex; flex-direction:column; text-decoration:none; color:inherit;
   border-radius:var(--radius-lg); overflow:hidden;
   background:var(--color-bg-soft);
   transition:transform var(--transition-base), box-shadow var(--transition-base);
 }
-.journalCard:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(178,87,69,0.2); }
+.journalCard:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(178,87,69,0.18); }
 .journalCard:hover .journalImg img { transform:scale(1.06); }
+
+/* Ghost article number — Exaggerated Minimalism editorial detail */
+.journalNum {
+  position:absolute;
+  top:-0.15em; right:10px;
+  font-size:clamp(72px,10vw,100px);
+  font-weight:var(--font-weight-extralight);
+  letter-spacing:-0.02em;
+  color:rgba(51,33,20,0.055);
+  line-height:1;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+}
 
 .journalImg { position:relative; height:200px; overflow:hidden; }
 .journalImg img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
@@ -673,13 +734,22 @@
   position:absolute; bottom:12px; left:14px;
   font-size:9px; font-weight:var(--font-weight-semibold);
   letter-spacing:var(--tracking-wide); text-transform:uppercase;
-  background:linear-gradient(135deg, var(--color-tabla-red,#b25745), var(--color-sec-terracotta,#c85838));
-  color:white; padding:3px 8px; border-radius:var(--radius-sm);
+  background:var(--color-tabla-red,#b25745);
+  color:white; padding:3px 10px; border-radius:var(--radius-sm);
 }
-.journalInfo { padding:18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.journalInfo { padding:18px; display:flex; flex-direction:column; gap:8px; flex:1; position:relative; z-index:1; }
 .journalTitle { font-size:16px; font-weight:var(--font-weight-regular); color:var(--color-brown); line-height:1.35; }
 .journalExcerpt { font-size:13px; font-weight:var(--font-weight-light); color:var(--color-text-secondary); line-height:1.65; }
-.journalMeta { font-size:11px; color:var(--color-text-muted); margin-top:auto; }
+.journalMeta {
+  font-size:10px; color:var(--color-text-muted); margin-top:auto;
+  letter-spacing:var(--tracking-wide); text-transform:uppercase;
+  display:flex; align-items:center; gap:6px;
+}
+.journalMeta::before {
+  content:'';
+  display:inline-block; width:20px; height:1px;
+  background:var(--color-border); flex-shrink:0;
+}
 
 /* ── BEAUTY PROFILE ── */
 .profileSection { display:grid; grid-template-columns:1fr; min-height:480px; }
@@ -727,9 +797,16 @@
 
 /* ── LOYALTY ── */
 .loyaltySection {
-  position:relative; padding:100px 0;
+  position:relative; padding:108px 0;
   background: var(--color-brown,#332114);
   text-align:center; overflow:hidden;
+}
+.loyaltySection::before {
+  content:'';
+  position:absolute; inset:0; z-index:0;
+  pointer-events:none;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .loyaltyBg {

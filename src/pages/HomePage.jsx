@@ -291,6 +291,7 @@ export default function HomePage() {
             {editorialArticles.slice(0, 3).map((a, i) => (
               <Link key={a.id} to={`/journal/${a.slug}`}
                 className={[styles.journalCard, i === 0 ? styles.journalCardFeat : ''].join(' ')}>
+                <span className={styles.journalNum} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <div className={styles.journalImg}>
                   <img src={a.image} alt={a.title} loading="lazy" />
                   <div className={styles.journalImgOverlay} />

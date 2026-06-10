@@ -4,13 +4,17 @@
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: transform var(--transition-base);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
-.card:hover { transform: translateY(-6px); }
+.card:hover { transform: translateY(-8px); }
 .card:hover .quickAdd { opacity: 1; transform: translateY(0); }
-.card:hover .image { transform: scale(1.05); }
+.card:hover .image { transform: scale(1.06); }
 .card:hover .imageWrap {
-  box-shadow: 0 12px 36px rgba(178,87,69,0.22);
+  /* Dimensional layering: three shadow layers at different radii and colours */
+  box-shadow:
+    0 2px 4px rgba(51,33,20,0.06),
+    0 8px 20px rgba(178,87,69,0.14),
+    0 20px 48px rgba(51,33,20,0.18);
 }
 
 .imageWrap {
@@ -19,7 +23,8 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 3/4;
-  transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 2px 8px rgba(51,33,20,0.06);
 }
 
 /* Shimmer sweep on hover */
