@@ -70,7 +70,7 @@ export default function AuthModal() {
         </p>
 
         <p className={styles.loyalty}>
-          Join now and start earning <strong>kenzup</strong> loyalty points from your first purchase.
+          Join now and start earning <strong>AKSAL Black</strong> loyalty points from your first purchase.
         </p>
       </div>
     </>

@@ -6,32 +6,41 @@ import styles from './LoyaltyPage.module.css';
 
 const TIERS = [
   {
-    id: 'bloom',
-    name: 'Bloom',
+    id: 'silver',
+    name: 'Silver',
     threshold: 'Free to join',
     thresholdSub: 'No minimum spend',
-    color: '#ebe8e0',
+    color: '#b8bec8',
     textColor: '#332114',
     benefits: [true, '+100 pts', '+50 pts', '+200 pts', true, true, 'Welcome gift', null, null, null, null],
   },
   {
-    id: 'eclat',
-    name: 'Éclat',
+    id: 'gold',
+    name: 'Gold',
     threshold: '1,500 MAD / year',
     thresholdSub: 'Annual spend',
-    color: '#d4a391',
-    textColor: '#332114',
+    color: '#c4933f',
+    textColor: 'white',
     highlighted: true,
     benefits: [true, '+100 pts', '+50 pts', '+200 pts', true, true, 'Enhanced gift', null, true, null, true],
   },
   {
-    id: 'lumiere',
-    name: 'Lumière',
+    id: 'platinum',
+    name: 'Platinum',
     threshold: '4,000 MAD / year',
     thresholdSub: 'Annual spend',
-    color: '#b25745',
+    color: '#8890a8',
     textColor: 'white',
     benefits: [true, '+150 pts', '+75 pts', '+300 pts', true, true, 'Luxury gift', true, true, true, true],
+  },
+  {
+    id: 'diamond',
+    name: 'Diamond',
+    threshold: '8,000 MAD / year',
+    thresholdSub: 'Annual spend',
+    color: '#332114',
+    textColor: 'white',
+    benefits: [true, '+200 pts', '+100 pts', '+400 pts', true, true, 'Exclusive gift', true, true, true, true],
   },
 ];
 
@@ -51,24 +60,24 @@ const BENEFIT_LABELS = [
 
 const FAQS = [
   {
-    q: 'How do I join kenzup?',
-    a: "Creating a Yan BTY account automatically enrols you into kenzup at Bloom tier — no minimum spend, no hidden fees. Any purchases made in the last 365 days count toward your current tier status.",
+    q: 'How do I join AKSAL Black?',
+    a: 'Creating a Yan BTY account automatically enrols you into AKSAL Black at Silver tier — no minimum spend, no hidden fees. Any purchases made in the last 365 days count toward your current tier status.',
   },
   {
     q: 'How do I earn kenz points?',
-    a: 'You earn 1 kenz point for every 1 MAD spent on yanbty.com or through the kenzup app. Bonus points are available for completing your Beauty Profile (+75 pts), writing product reviews (+50 pts), referring friends (+200 pts), and on your birthday (+100 pts).',
+    a: 'You earn 1 kenz point for every 1 MAD spent on yanbty.com or through the AKSAL Black app. Bonus points are available for completing your Beauty Profile (+75 pts), writing product reviews (+50 pts), referring friends (+200 pts), and on your birthday (+100 pts).',
   },
   {
     q: 'How do tier levels work?',
-    a: 'There are three tiers: Bloom (free), Éclat (1,500 MAD/year), and Lumière (4,000 MAD/year). Tiers reset every 365 days from when you first reached that level. The higher your tier, the more exclusive your rewards.',
+    a: 'There are four tiers: Silver (free), Gold (1,500 MAD/year), Platinum (4,000 MAD/year), and Diamond (8,000 MAD/year). Tiers reset every 365 days from when you first reached that level — keep spending to maintain or rise through your tier.',
   },
   {
     q: 'When do my points expire?',
-    a: 'Kenz points expire after 330 days of earning. Once converted into a reward voucher, that voucher is valid for 30 days. You can check your balance and expiry dates in your kenzup dashboard at any time.',
+    a: 'Kenz points expire after 330 days of earning. Once converted into a reward voucher, that voucher is valid for 30 days. Check your balance and expiry dates anytime in the AKSAL Black app or your account dashboard.',
   },
   {
     q: 'Can I use a points reward and a promo code together?',
-    a: 'Points rewards and promotional codes cannot be combined in a single transaction. However, shipping benefits (free delivery for Éclat and Lumière members) are automatically applied and can be used alongside points rewards.',
+    a: 'Points rewards and promotional codes cannot be combined in a single transaction. However, shipping benefits (free delivery for Gold and above) are automatically applied and can be used alongside points rewards.',
   },
 ];
 
@@ -78,8 +87,8 @@ export default function LoyaltyPage() {
   return (
     <main>
       <SEO
-        title="kenzup Loyalty — Earn Points & Unlock Rewards"
-        description="Join kenzup, Yan BTY's loyalty programme. Earn points with every purchase, unlock exclusive rewards, and rise through Bloom, Éclat, and Lumière tiers."
+        title="AKSAL Black — Earn Points & Unlock Rewards"
+        description="Join AKSAL Black, Yan BTY's loyalty programme powered by kenzup. Earn kenz points with every purchase and rise through Silver, Gold, Platinum, and Diamond tiers."
         path="/loyalty"
       />
 
@@ -87,25 +96,35 @@ export default function LoyaltyPage() {
       <section className={styles.hero}>
         <div className={styles.heroGrain} aria-hidden="true" />
         <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>✦ Yan BTY Rewards</p>
-          <h1 className={styles.heroTitle}>
-            Beauty rewards,<br />reinvented.
-          </h1>
+          <p className={styles.heroPowered}>Powered by kenzup</p>
+          <h1 className={styles.heroTitle}>AKSAL Black</h1>
+          <p className={styles.heroTagline}>Beauty rewards, reinvented.</p>
           <p className={styles.heroBody}>
-            Earn kenz points with every purchase and unlock exclusive rewards — from birthday treats and free gifts to personal beauty consultations and express delivery.
+            Earn kenz points with every purchase and unlock exclusive rewards — from birthday treats and free gifts to personal beauty consultations and express delivery. Four tiers, endless benefits.
           </p>
           <div className={styles.heroCtas}>
             <Link to="/account" className={styles.heroJoinBtn}>
-              Join kenzup — it's free <ArrowRight size={15} />
+              Join AKSAL Black — it's free <ArrowRight size={15} />
             </Link>
             <Link to="/account/loyalty" className={styles.heroSignInLink}>
               Already a member? Sign in
             </Link>
           </div>
+          <div className={styles.heroTierBadges}>
+            {TIERS.map(tier => (
+              <span
+                key={tier.id}
+                className={styles.heroTierBadge}
+                style={{ background: tier.color, color: tier.textColor }}
+              >
+                {tier.name}
+              </span>
+            ))}
+          </div>
           <div className={styles.heroStats}>
             {[
               ['1 MAD', '= 1 point'],
-              ['3 tiers', 'of rewards'],
+              ['4 tiers', 'of rewards'],
               ['Free', 'to join'],
             ].map(([top, bottom]) => (
               <div key={top} className={styles.heroStat}>
@@ -122,14 +141,14 @@ export default function LoyaltyPage() {
         <div className="container">
           <header className={styles.sectionHeader}>
             <p className={styles.sectionEyebrow}>✦ Getting started</p>
-            <h2 className={styles.sectionTitle}>How kenzup works</h2>
+            <h2 className={styles.sectionTitle}>How AKSAL Black works</h2>
           </header>
           <div className={styles.howGrid}>
             {[
               {
                 num: '01',
-                title: 'Join kenzup',
-                body: "Create a free Yan BTY account and you're automatically enrolled into kenzup at Bloom tier — no minimum spend, no hidden fees.",
+                title: 'Join AKSAL Black',
+                body: "Create a free Yan BTY account and you're automatically enrolled into AKSAL Black at Silver tier — no minimum spend, no fees.",
               },
               {
                 num: '02',
@@ -139,7 +158,7 @@ export default function LoyaltyPage() {
               {
                 num: '03',
                 title: 'Unlock rewards',
-                body: 'Redeem points for MAD-off vouchers and free beauty gifts. Spend more to rise through the tiers and unlock even more exclusive perks.',
+                body: 'Redeem points for MAD-off vouchers and free beauty gifts. Spend more to rise through Silver, Gold, Platinum, and Diamond tiers.',
               },
             ].map(step => (
               <div key={step.num} className={styles.howCard}>
@@ -174,10 +193,10 @@ export default function LoyaltyPage() {
       <section className={styles.tiersSection}>
         <div className="container">
           <header className={styles.sectionHeader}>
-            <p className={styles.sectionEyebrow}>✦ Three levels of rewards</p>
-            <h2 className={styles.sectionTitle}>Your rewards journey</h2>
+            <p className={styles.sectionEyebrow}>✦ Four levels of rewards</p>
+            <h2 className={styles.sectionTitle}>Your AKSAL Black journey</h2>
             <p className={styles.tiersSubtitle}>
-              The more you shop, the more you unlock. Rise through Bloom, Éclat, and Lumière to reveal the full kenzup experience.
+              The more you shop, the more you unlock. Rise through Silver, Gold, Platinum, and Diamond to reveal the full AKSAL Black experience.
             </p>
           </header>
 
@@ -222,7 +241,7 @@ export default function LoyaltyPage() {
                     to="/account"
                     className={[styles.tierBtn, tier.highlighted ? styles.tierBtnPrimary : ''].join(' ')}
                   >
-                    {tier.id === 'bloom' ? 'Join free' : 'Start earning'} <ArrowRight size={13} />
+                    {tier.id === 'silver' ? 'Join free' : 'Start earning'} <ArrowRight size={13} />
                   </Link>
                 </div>
               </div>
@@ -243,37 +262,37 @@ export default function LoyaltyPage() {
               {
                 icon: '🎁',
                 title: 'Birthday Reward',
-                body: 'A surprise beauty gift every year on your birthday — upgraded at each tier level.',
+                body: 'A surprise beauty gift every year on your birthday — upgraded at each tier level, with Diamond members receiving an exclusive luxury treat.',
                 tier: 'All tiers',
               },
               {
                 icon: '✨',
                 title: 'Tier Welcome Gift',
-                body: 'Unlock a free beauty gift every time you reach a new tier. More luxurious at Éclat and Lumière.',
+                body: 'Unlock a free beauty gift every time you reach a new tier. More luxurious at Gold, Platinum, and Diamond.',
                 tier: 'All tiers',
               },
               {
                 icon: '🚀',
                 title: 'Early Launch Access',
                 body: 'Be first to shop new launches, limited editions, and exclusive collaborations before the public.',
-                tier: 'Éclat & Lumière',
+                tier: 'Gold & above',
               },
               {
                 icon: '💋',
                 title: 'Personal Beauty Advisor',
-                body: 'Your own dedicated consultant for 1:1 online consultations, routine building, and personalised picks.',
-                tier: 'Lumière only',
+                body: 'Your own dedicated consultant for 1:1 online consultations, routine building, and personalised recommendations.',
+                tier: 'Platinum & Diamond',
               },
               {
                 icon: '📦',
                 title: 'Free Delivery',
-                body: 'Éclat members get free standard delivery on every order. Lumière members also enjoy complimentary express delivery.',
-                tier: 'Éclat & Lumière',
+                body: 'Gold and above enjoy free standard delivery on every order. Platinum and Diamond members also get complimentary express delivery.',
+                tier: 'Gold & above',
               },
               {
                 icon: '💰',
                 title: 'Points on Every Order',
-                body: '1 MAD = 1 kenz point on every single order, with bonus multipliers during exclusive member events.',
+                body: '1 MAD = 1 kenz point on every single order. Diamond members earn accelerated points on all purchases.',
                 tier: 'All tiers',
               },
             ].map(perk => (
@@ -293,7 +312,7 @@ export default function LoyaltyPage() {
         <div className="container">
           <header className={styles.sectionHeader}>
             <p className={styles.sectionEyebrow}>✦ Questions answered</p>
-            <h2 className={styles.sectionTitle}>kenzup FAQ</h2>
+            <h2 className={styles.sectionTitle}>AKSAL Black FAQ</h2>
           </header>
           <div className={styles.faqList}>
             {FAQS.map((faq, i) => (
@@ -321,10 +340,10 @@ export default function LoyaltyPage() {
         <div className={styles.joinGrain} aria-hidden="true" />
         <div className="container">
           <div className={styles.joinContent}>
-            <p className={styles.joinEyebrow}>✦ Ready to start?</p>
-            <h2 className={styles.joinTitle}>Join kenzup today</h2>
+            <p className={styles.joinPowered}>Powered by kenzup</p>
+            <h2 className={styles.joinTitle}>Join AKSAL Black today</h2>
             <p className={styles.joinBody}>
-              Create your free Yan BTY account and start earning kenz points on your very first order. Your beauty rewards journey starts now.
+              Create your free Yan BTY account and start earning kenz points on your very first order. Download the AKSAL Black app to manage your rewards on the go.
             </p>
             <Link to="/account" className={styles.joinBtn}>
               Create free account <ArrowRight size={15} />

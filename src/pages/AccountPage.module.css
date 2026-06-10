@@ -403,3 +403,109 @@
 }
 .wlDelete:hover { color: #b91c1c; }
 
+/* ══════════════════════════════════
+   AKSAL BLACK LOYALTY
+   ══════════════════════════════════ */
+.aksalHeader {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.aksalPowered {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-text-muted); margin-bottom: 2px;
+}
+.aksalTitle {
+  font-size: 28px; font-weight: var(--font-weight-extralight);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-brown); margin: 0;
+}
+.aksalLearnMore {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-tabla-red); text-decoration: none;
+  margin-top: 6px; flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+.aksalLearnMore:hover { opacity: 0.7; }
+
+/* Tier status card */
+.tierStatusCard {
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  margin-bottom: 28px;
+}
+
+/* 4-tier step row */
+.tierSteps {
+  display: flex; align-items: flex-start; gap: 0;
+  margin-bottom: 24px; position: relative;
+}
+.tierStepGroup {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1; position: relative;
+}
+.tierStepDot {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: white; display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  z-index: 1;
+}
+.tierStepDotPast { opacity: 0.75; }
+.tierStepDotCurrent {
+  width: 30px; height: 30px;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
+}
+.tierStepLabel {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-text-muted); margin-top: 6px; text-align: center;
+}
+.tierStepLabelActive {
+  font-weight: 600; color: var(--color-brown);
+}
+.tierConnector {
+  position: absolute; top: 13px; left: calc(50% + 15px);
+  width: calc(100% - 30px); height: 2px;
+  background: var(--color-border);
+  z-index: 0;
+}
+.tierConnectorActive { opacity: 0.8; }
+
+/* Info row */
+.tierInfoRow {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+.tierBadge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+}
+.tierPointsBlock {
+  display: flex; align-items: baseline; gap: 6px;
+}
+.tierPointsNum {
+  font-size: 22px; font-weight: 300; color: var(--color-brown); letter-spacing: -0.02em;
+}
+.tierPointsLabel {
+  font-size: 12px; color: var(--color-text-muted);
+}
+
+/* Progress bar */
+.tierProgressWrap { margin-top: 4px; }
+.tierProgressBar {
+  height: 6px; border-radius: 3px; background: var(--color-border);
+  overflow: hidden; margin-bottom: 8px;
+}
+.tierProgressFill {
+  height: 100%; border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.tierProgressLabel {
+  font-size: 12px; color: var(--color-text-muted);
+}
+.tierTopLabel {
+  font-size: 13px; color: var(--color-text-muted); font-style: italic; margin-top: 4px;
+}

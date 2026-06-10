@@ -21,7 +21,7 @@ const footerLinks = [
       { label: 'Our Story', to: '/about' },
       { label: 'Yan&One', to: '/brand/yan-one' },
       { label: 'Beauty Journal', to: '/journal' },
-      { label: 'Loyalty — kenzup', to: '/account/loyalty' },
+      { label: 'Loyalty — AKSAL Black', to: '/loyalty' },
       { label: 'Stores', to: '/stores' },
       { label: 'Gift Cards', to: '/gift-cards' },
     ],

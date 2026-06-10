@@ -30,21 +30,29 @@
   gap: 20px;
 }
 
-.heroEyebrow {
-  font-size: 11px;
+.heroPowered {
+  font-size: 10px;
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-light-tabla-red, #d4a391);
+  color: rgba(235, 222, 204, 0.5);
 }
 
 .heroTitle {
-  font-size: clamp(44px, 7.5vw, 84px);
+  font-size: clamp(48px, 8vw, 96px);
   font-weight: var(--font-weight-extralight);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-light-taupe, #ebe8e0);
-  line-height: 1.05;
+  line-height: 1;
+}
+
+.heroTagline {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: var(--font-weight-extralight);
+  color: rgba(235, 222, 204, 0.65);
+  font-style: italic;
+  letter-spacing: var(--tracking-wide);
 }
 
 .heroBody {
@@ -85,6 +93,23 @@
   transition: opacity var(--transition-fast);
 }
 .heroJoinBtn:hover { opacity: 0.86; }
+
+.heroTierBadges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.heroTierBadge {
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+}
 
 .heroSignInLink {
   font-size: 13px;
@@ -283,8 +308,11 @@
   box-shadow: 0 4px 32px rgba(51, 33, 20, 0.1);
 }
 
-@media (min-width: 768px) {
-  .tiersGrid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 640px) {
+  .tiersGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .tiersGrid { grid-template-columns: repeat(4, 1fr); }
 }
 
 .tierCard {
@@ -566,12 +594,12 @@
   gap: 16px;
 }
 
-.joinEyebrow {
+.joinPowered {
   font-size: 10px;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-light);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-light-tabla-red, #d4a391);
+  color: rgba(235, 222, 204, 0.4);
 }
 
 .joinTitle {

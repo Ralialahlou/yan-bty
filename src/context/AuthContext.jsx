@@ -13,6 +13,7 @@ const MOCK_USER = {
   email: 'layla@example.com',
   loyaltyPoints: 1240,
   tier: 'Gold',
+  spendThisYear: 2240,
   orders: [
     { id: 'ORD-2025-001', date: '2025-11-01', total: 1340, status: 'Delivered', items: 3 },
     { id: 'ORD-2025-002', date: '2025-10-15', total: 580, status: 'Delivered', items: 1 },
@@ -37,7 +38,7 @@ export function AuthProvider({ children }) {
   };
 
   const register = (name, email, password) => {
-    setUser({ ...MOCK_USER, name, email, loyaltyPoints: 0, tier: 'Member', orders: [] });
+    setUser({ ...MOCK_USER, name, email, loyaltyPoints: 0, tier: 'Silver', spendThisYear: 0, orders: [] });
     setIsAuthOpen(false);
     return Promise.resolve();
   };

@@ -332,7 +332,7 @@ export default function HomePage() {
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className={styles.loyaltyContent} data-reveal>
             <p className={styles.loyaltyEyebrow}>✦ Rewards &amp; Perks</p>
-            <h2 className={styles.loyaltyHeadline}>Join kenzup Loyalty</h2>
+            <h2 className={styles.loyaltyHeadline}>Join AKSAL Black</h2>
             <p className={styles.loyaltyBody}>
               Earn points with every purchase and review. Redeem for exclusive rewards and early access to new launches.
             </p>

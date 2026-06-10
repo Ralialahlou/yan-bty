@@ -9,6 +9,13 @@ import { products } from '../data/products';
 import { skinTypes, skinConcerns } from '../data/categories';
 import styles from './AccountPage.module.css';
 
+const AKSAL_TIERS = [
+  { id: 'silver',   label: 'Silver',   minSpend: 0,    color: '#b8bec8', textColor: '#332114' },
+  { id: 'gold',     label: 'Gold',     minSpend: 1500, color: '#c4933f', textColor: 'white' },
+  { id: 'platinum', label: 'Platinum', minSpend: 4000, color: '#8890a8', textColor: 'white' },
+  { id: 'diamond',  label: 'Diamond',  minSpend: 8000, color: '#332114', textColor: 'white' },
+];
+
 // Mock order items for detail view
 const MOCK_ORDER_ITEMS = {
   'ORD-2025-001': [
@@ -140,7 +147,7 @@ export default function AccountPage() {
     { icon: <User size={16} />, label: 'My Profile', id: 'profile' },
     { icon: <Package size={16} />, label: 'Orders', id: 'orders' },
     { icon: <Heart size={16} />, label: 'Wishlist', id: 'wishlist' },
-    { icon: <Star size={16} />, label: 'Loyalty — kenzup', id: 'loyalty' },
+    { icon: <Star size={16} />, label: 'Loyalty — AKSAL Black', id: 'loyalty' },
     { icon: <MapPin size={16} />, label: 'Addresses', id: 'addresses' },
     { icon: <Settings size={16} />, label: 'Beauty Profile', id: 'beauty-profile' },
   ];
@@ -224,7 +231,7 @@ export default function AccountPage() {
                     <Button variant="primary" onClick={handleSaveProfile}>
                       {profileSaved ? <><Check size={16} /> Saved!</> : 'Save Changes'}
                     </Button>
-                    <p className={styles.profileNote}>Your birthday earns you a bonus 100 kenzup points.</p>
+                    <p className={styles.profileNote}>Your birthday earns you a bonus 100 AKSAL Black points.</p>
                   </div>
                 </div>
               </div>
@@ -286,93 +293,141 @@ export default function AccountPage() {
             )}
 
             {/* ── LOYALTY ── */}
-            {currentSection === 'loyalty' && (
-              <div>
-                <h1 className={styles.pageTitle}>kenzup Loyalty</h1>
-                <div className={styles.loyaltyHero}>
-                  <div className={styles.loyaltyPoints}>
-                    <span className={styles.loyaltyPointsNum}>{user.loyaltyPoints?.toLocaleString()}</span>
-                    <span className={styles.loyaltyPointsLabel}>Points</span>
-                  </div>
-                  <div className={styles.loyaltyRight}>
-                    <p className={styles.loyaltyTierLabel}><Star size={14} fill="currentColor" /> {user.tier} Member</p>
-                    <p className={styles.loyaltyNextTier}>2,760 points to Platinum</p>
-                    <div className={styles.loyaltyBar}>
-                      <div className={styles.loyaltyBarFill} style={{ width: `${Math.min(100, (user.loyaltyPoints / 4000) * 100)}%` }} />
-                    </div>
-                  </div>
-                </div>
+            {currentSection === 'loyalty' && (() => {
+              const tierIdx = Math.max(0, AKSAL_TIERS.findIndex(t => t.label === user.tier));
+              const currentTier = AKSAL_TIERS[tierIdx];
+              const nextTier = AKSAL_TIERS[tierIdx + 1] ?? null;
+              const spend = user.spendThisYear ?? 0;
+              const progressPct = nextTier
+                ? Math.min(100, Math.round(((spend - currentTier.minSpend) / (nextTier.minSpend - currentTier.minSpend)) * 100))
+                : 100;
+              const madToNext = nextTier ? Math.max(0, nextTier.minSpend - spend) : 0;
 
-                <div className={styles.loyaltyEarnGrid}>
-                  {[
-                    ['Purchases', '1 MAD = 1 point', '🛍️'],
-                    ['Write a Review', '+50 points', '⭐'],
-                    ['Refer a Friend', '+200 points', '👥'],
-                    ['Birthday Bonus', '+100 points', '🎂'],
-                  ].map(([title, desc, icon]) => (
-                    <div key={title} className={styles.loyaltyEarnCard}>
-                      <span className={styles.loyaltyEarnIcon}>{icon}</span>
-                      <p className={styles.loyaltyEarnTitle}>{title}</p>
-                      <p className={styles.loyaltyEarnDesc}>{desc}</p>
+              return (
+                <div>
+                  {/* AKSAL Black header */}
+                  <div className={styles.aksalHeader}>
+                    <div>
+                      <p className={styles.aksalPowered}>Powered by kenzup</p>
+                      <h1 className={styles.aksalTitle}>AKSAL Black</h1>
                     </div>
-                  ))}
-                </div>
-
-                {/* kenzup App Download */}
-                <div className={styles.kenzupApp}>
-                  <div className={styles.kenzupLeft}>
-                    <p className={styles.kenzupEyebrow}>Powered by</p>
-                    <h3 className={styles.kenzupTitle}>kenzup</h3>
-                    <p className={styles.kenzupDesc}>
-                      Download the kenzup app to manage your loyalty points, track your rewards, and get exclusive member-only offers — all in one place.
-                    </p>
-                    <div className={styles.kenzupBtns}>
-                      <a
-                        href="https://www.kenzup.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.kenzupStoreBtn}
-                      >
-                        <Smartphone size={16} />
-                        <div>
-                          <span className={styles.kenzupStoreSub}>Download on</span>
-                          <span className={styles.kenzupStoreName}>App Store</span>
-                        </div>
-                      </a>
-                      <a
-                        href="https://www.kenzup.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.kenzupStoreBtn}
-                      >
-                        <Smartphone size={16} />
-                        <div>
-                          <span className={styles.kenzupStoreSub}>Get it on</span>
-                          <span className={styles.kenzupStoreName}>Google Play</span>
-                        </div>
-                      </a>
-                      <a
-                        href="https://www.kenzup.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.kenzupWebLink}
-                      >
-                        Visit kenzup.com <ExternalLink size={13} />
-                      </a>
-                    </div>
+                    <Link to="/loyalty" className={styles.aksalLearnMore}>
+                      Learn more <ChevronRight size={14} />
+                    </Link>
                   </div>
-                  <div className={styles.kenzupVisual}>
-                    <div className={styles.kenzupPhone}>
-                      <div className={styles.kenzupPhoneScreen}>
-                        <p className={styles.kenzupPhonePoints}>{user.loyaltyPoints?.toLocaleString()}</p>
-                        <p className={styles.kenzupPhoneLabel}>Your Points</p>
-                        <p className={styles.kenzupPhoneTier}>{user.tier} Member</p>
+
+                  {/* Tier status card */}
+                  <div className={styles.tierStatusCard}>
+                    {/* 4-tier step progress */}
+                    <div className={styles.tierSteps}>
+                      {AKSAL_TIERS.map((tier, i) => (
+                        <div key={tier.id} className={styles.tierStepGroup}>
+                          <div className={[
+                            styles.tierStepDot,
+                            i < tierIdx ? styles.tierStepDotPast : '',
+                            i === tierIdx ? styles.tierStepDotCurrent : '',
+                          ].join(' ')}
+                            style={i <= tierIdx ? { background: tier.color, borderColor: tier.color } : {}}>
+                            {i < tierIdx && <Check size={10} color={tier.textColor} strokeWidth={3} />}
+                          </div>
+                          <span className={[styles.tierStepLabel, i === tierIdx ? styles.tierStepLabelActive : ''].join(' ')}>
+                            {tier.label}
+                          </span>
+                          {i < AKSAL_TIERS.length - 1 && (
+                            <div className={[styles.tierConnector, i < tierIdx ? styles.tierConnectorActive : ''].join(' ')}
+                              style={i < tierIdx ? { background: AKSAL_TIERS[i + 1].color } : {}} />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Points + tier badge row */}
+                    <div className={styles.tierInfoRow}>
+                      <div className={styles.tierBadge}
+                        style={{ background: currentTier.color, color: currentTier.textColor }}>
+                        <Star size={11} fill="currentColor" />
+                        {currentTier.label} Member
+                      </div>
+                      <div className={styles.tierPointsBlock}>
+                        <span className={styles.tierPointsNum}>{user.loyaltyPoints?.toLocaleString()}</span>
+                        <span className={styles.tierPointsLabel}>kenz points available</span>
+                      </div>
+                    </div>
+
+                    {/* Progress to next tier */}
+                    {nextTier ? (
+                      <div className={styles.tierProgressWrap}>
+                        <div className={styles.tierProgressBar}>
+                          <div className={styles.tierProgressFill}
+                            style={{ width: `${progressPct}%`, background: currentTier.color }} />
+                        </div>
+                        <p className={styles.tierProgressLabel}>
+                          <strong>{madToNext.toLocaleString()} MAD</strong> more spend to reach{' '}
+                          <span style={{ color: nextTier.color, fontWeight: 600 }}>{nextTier.label}</span>
+                        </p>
+                      </div>
+                    ) : (
+                      <p className={styles.tierTopLabel}>You've reached Diamond — the highest AKSAL Black tier. ✦</p>
+                    )}
+                  </div>
+
+                  {/* Earn grid */}
+                  <div className={styles.loyaltyEarnGrid}>
+                    {[
+                      ['Purchases', '1 MAD = 1 point', '🛍️'],
+                      ['Write a Review', '+50 points', '⭐'],
+                      ['Refer a Friend', '+200 points', '👥'],
+                      ['Birthday Bonus', '+100 points', '🎂'],
+                    ].map(([title, desc, icon]) => (
+                      <div key={title} className={styles.loyaltyEarnCard}>
+                        <span className={styles.loyaltyEarnIcon}>{icon}</span>
+                        <p className={styles.loyaltyEarnTitle}>{title}</p>
+                        <p className={styles.loyaltyEarnDesc}>{desc}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* AKSAL Black App Download */}
+                  <div className={styles.kenzupApp}>
+                    <div className={styles.kenzupLeft}>
+                      <p className={styles.kenzupEyebrow}>Powered by kenzup</p>
+                      <h3 className={styles.kenzupTitle}>AKSAL Black</h3>
+                      <p className={styles.kenzupDesc}>
+                        Manage your loyalty points, track your rewards, and get exclusive member-only offers — all in the AKSAL Black app.
+                      </p>
+                      <div className={styles.kenzupBtns}>
+                        <a href="https://www.kenzup.com/" target="_blank" rel="noopener noreferrer" className={styles.kenzupStoreBtn}>
+                          <Smartphone size={16} />
+                          <div>
+                            <span className={styles.kenzupStoreSub}>Download on</span>
+                            <span className={styles.kenzupStoreName}>App Store</span>
+                          </div>
+                        </a>
+                        <a href="https://www.kenzup.com/" target="_blank" rel="noopener noreferrer" className={styles.kenzupStoreBtn}>
+                          <Smartphone size={16} />
+                          <div>
+                            <span className={styles.kenzupStoreSub}>Get it on</span>
+                            <span className={styles.kenzupStoreName}>Google Play</span>
+                          </div>
+                        </a>
+                        <a href="https://www.kenzup.com/" target="_blank" rel="noopener noreferrer" className={styles.kenzupWebLink}>
+                          Visit kenzup.com <ExternalLink size={13} />
+                        </a>
+                      </div>
+                    </div>
+                    <div className={styles.kenzupVisual}>
+                      <div className={styles.kenzupPhone}>
+                        <div className={styles.kenzupPhoneScreen}>
+                          <p className={styles.kenzupPhonePoints}>{user.loyaltyPoints?.toLocaleString()}</p>
+                          <p className={styles.kenzupPhoneLabel}>AKSAL Black</p>
+                          <p className={styles.kenzupPhoneTier}>{currentTier.label} Member</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {/* ── ADDRESSES ── */}
             {currentSection === 'addresses' && (
