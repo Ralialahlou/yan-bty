@@ -161,3 +161,216 @@
   transition: gap var(--transition-fast);
 }
 .catNavLink:hover { gap: 8px; }
+
+/* ── Editorial partner hero (full-bleed image) ── */
+.partnerHeroFull {
+  position: relative;
+  overflow: hidden;
+  min-height: 68vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.partnerHeroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.partnerHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 4, 12, 0.35) 0%,
+    rgba(8, 4, 12, 0.05) 45%,
+    rgba(8, 4, 12, 0.72) 100%
+  );
+}
+
+.partnerHeroText {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 64px var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.partnerHeroEyebrow {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.partnerHeroName {
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: var(--font-weight-extralight);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: white;
+  line-height: 1;
+}
+
+.partnerHeroTagline {
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: var(--font-weight-light);
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ── Brand about strip ── */
+.brandAbout {
+  background: var(--color-bg-soft);
+  padding: 44px 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.brandAboutInner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brandAboutLabel {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-tabla-red);
+}
+
+.brandAboutText {
+  font-size: 15px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-secondary);
+  line-height: 1.78;
+}
+
+/* ── Icon products ── */
+.iconsSection {
+  padding: 80px 0;
+  background: var(--color-brown, #332114);
+}
+
+.iconsHeader {
+  margin-bottom: 40px;
+}
+
+.iconsEyebrow {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-light-tabla-red, #d4a391);
+  margin-bottom: 8px;
+}
+
+.iconsTitle {
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: var(--font-weight-extralight);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-light-taupe, #ebe8e0);
+  line-height: 1.1;
+}
+
+.iconsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) { .iconsGrid { grid-template-columns: repeat(3, 1fr); } }
+
+.iconCard {
+  display: flex;
+  flex-direction: column;
+  background: rgba(51, 33, 20, 0.92);
+  text-decoration: none;
+  transition: background var(--transition-base);
+}
+.iconCard:hover { background: rgba(51, 33, 20, 0.65); }
+
+.iconCardImg {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+.iconCardImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 28px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.iconCard:hover .iconCardImg img { transform: scale(1.07); }
+
+.iconCardInfo {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.iconCardCat {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-light-tabla-red, #d4a391);
+}
+
+.iconCardName {
+  font-size: 17px;
+  font-weight: var(--font-weight-extralight);
+  color: var(--color-light-taupe, #ebe8e0);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.iconCardDesc {
+  font-size: 13px;
+  font-weight: var(--font-weight-light);
+  color: rgba(235, 222, 204, 0.6);
+  line-height: 1.6;
+}
+
+.iconCardPrice {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-medium-taupe, #ebdecc);
+  margin-top: 2px;
+}
+
+.iconCardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-light-tabla-red, #d4a391);
+  margin-top: 8px;
+  transition: gap var(--transition-fast);
+}
+.iconCard:hover .iconCardCta { gap: 9px; }

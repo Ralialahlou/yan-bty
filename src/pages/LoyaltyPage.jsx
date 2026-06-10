@@ -1,0 +1,341 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Check, Minus, ChevronDown, ChevronUp } from 'lucide-react';
+import SEO from '../components/common/SEO';
+import styles from './LoyaltyPage.module.css';
+
+const TIERS = [
+  {
+    id: 'bloom',
+    name: 'Bloom',
+    threshold: 'Free to join',
+    thresholdSub: 'No minimum spend',
+    color: '#ebe8e0',
+    textColor: '#332114',
+    benefits: [true, '+100 pts', '+50 pts', '+200 pts', true, true, 'Welcome gift', null, null, null, null],
+  },
+  {
+    id: 'eclat',
+    name: 'Éclat',
+    threshold: '1,500 MAD / year',
+    thresholdSub: 'Annual spend',
+    color: '#d4a391',
+    textColor: '#332114',
+    highlighted: true,
+    benefits: [true, '+100 pts', '+50 pts', '+200 pts', true, true, 'Enhanced gift', null, true, null, true],
+  },
+  {
+    id: 'lumiere',
+    name: 'Lumière',
+    threshold: '4,000 MAD / year',
+    thresholdSub: 'Annual spend',
+    color: '#b25745',
+    textColor: 'white',
+    benefits: [true, '+150 pts', '+75 pts', '+300 pts', true, true, 'Luxury gift', true, true, true, true],
+  },
+];
+
+const BENEFIT_LABELS = [
+  'Points per 1 MAD',
+  'Birthday bonus',
+  'Review reward',
+  'Referral reward',
+  '150 pts = 10 MAD off',
+  '300 pts = 20 MAD off',
+  'Tier welcome gift',
+  'Personal Beauty Advisor',
+  'Free standard delivery',
+  'Free express delivery',
+  'Early launch access',
+];
+
+const FAQS = [
+  {
+    q: 'How do I join kenzup?',
+    a: "Creating a Yan BTY account automatically enrols you into kenzup at Bloom tier — no minimum spend, no hidden fees. Any purchases made in the last 365 days count toward your current tier status.",
+  },
+  {
+    q: 'How do I earn kenz points?',
+    a: 'You earn 1 kenz point for every 1 MAD spent on yanbty.com or through the kenzup app. Bonus points are available for completing your Beauty Profile (+75 pts), writing product reviews (+50 pts), referring friends (+200 pts), and on your birthday (+100 pts).',
+  },
+  {
+    q: 'How do tier levels work?',
+    a: 'There are three tiers: Bloom (free), Éclat (1,500 MAD/year), and Lumière (4,000 MAD/year). Tiers reset every 365 days from when you first reached that level. The higher your tier, the more exclusive your rewards.',
+  },
+  {
+    q: 'When do my points expire?',
+    a: 'Kenz points expire after 330 days of earning. Once converted into a reward voucher, that voucher is valid for 30 days. You can check your balance and expiry dates in your kenzup dashboard at any time.',
+  },
+  {
+    q: 'Can I use a points reward and a promo code together?',
+    a: 'Points rewards and promotional codes cannot be combined in a single transaction. However, shipping benefits (free delivery for Éclat and Lumière members) are automatically applied and can be used alongside points rewards.',
+  },
+];
+
+export default function LoyaltyPage() {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  return (
+    <main>
+      <SEO
+        title="kenzup Loyalty — Earn Points & Unlock Rewards"
+        description="Join kenzup, Yan BTY's loyalty programme. Earn points with every purchase, unlock exclusive rewards, and rise through Bloom, Éclat, and Lumière tiers."
+        path="/loyalty"
+      />
+
+      {/* ═══ HERO ═══ */}
+      <section className={styles.hero}>
+        <div className={styles.heroGrain} aria-hidden="true" />
+        <div className={styles.heroContent}>
+          <p className={styles.heroEyebrow}>✦ Yan BTY Rewards</p>
+          <h1 className={styles.heroTitle}>
+            Beauty rewards,<br />reinvented.
+          </h1>
+          <p className={styles.heroBody}>
+            Earn kenz points with every purchase and unlock exclusive rewards — from birthday treats and free gifts to personal beauty consultations and express delivery.
+          </p>
+          <div className={styles.heroCtas}>
+            <Link to="/account" className={styles.heroJoinBtn}>
+              Join kenzup — it's free <ArrowRight size={15} />
+            </Link>
+            <Link to="/account/loyalty" className={styles.heroSignInLink}>
+              Already a member? Sign in
+            </Link>
+          </div>
+          <div className={styles.heroStats}>
+            {[
+              ['1 MAD', '= 1 point'],
+              ['3 tiers', 'of rewards'],
+              ['Free', 'to join'],
+            ].map(([top, bottom]) => (
+              <div key={top} className={styles.heroStat}>
+                <span className={styles.heroStatTop}>{top}</span>
+                <span className={styles.heroStatBottom}>{bottom}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ HOW IT WORKS ═══ */}
+      <section className={styles.howSection}>
+        <div className="container">
+          <header className={styles.sectionHeader}>
+            <p className={styles.sectionEyebrow}>✦ Getting started</p>
+            <h2 className={styles.sectionTitle}>How kenzup works</h2>
+          </header>
+          <div className={styles.howGrid}>
+            {[
+              {
+                num: '01',
+                title: 'Join kenzup',
+                body: "Create a free Yan BTY account and you're automatically enrolled into kenzup at Bloom tier — no minimum spend, no hidden fees.",
+              },
+              {
+                num: '02',
+                title: 'Earn kenz points',
+                body: 'Earn 1 kenz point for every 1 MAD you spend. Stack extra points through reviews, referrals, your birthday, and by completing your Beauty Profile.',
+              },
+              {
+                num: '03',
+                title: 'Unlock rewards',
+                body: 'Redeem points for MAD-off vouchers and free beauty gifts. Spend more to rise through the tiers and unlock even more exclusive perks.',
+              },
+            ].map(step => (
+              <div key={step.num} className={styles.howCard}>
+                <span className={styles.howNum}>{step.num}</span>
+                <h3 className={styles.howTitle}>{step.title}</h3>
+                <p className={styles.howBody}>{step.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.bonusRow}>
+            <p className={styles.bonusRowLabel}>✦ Bonus ways to earn</p>
+            <div className={styles.bonusGrid}>
+              {[
+                ['Complete Beauty Profile', '+75 pts', '✦'],
+                ['Write a Review', '+50 pts', '⭐'],
+                ['Refer a Friend', '+200 pts', '👥'],
+                ['Birthday Bonus', '+100 pts', '🎂'],
+              ].map(([action, pts, icon]) => (
+                <div key={action} className={styles.bonusCard}>
+                  <span className={styles.bonusIcon}>{icon}</span>
+                  <span className={styles.bonusAction}>{action}</span>
+                  <span className={styles.bonusPts}>{pts}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ TIERS ═══ */}
+      <section className={styles.tiersSection}>
+        <div className="container">
+          <header className={styles.sectionHeader}>
+            <p className={styles.sectionEyebrow}>✦ Three levels of rewards</p>
+            <h2 className={styles.sectionTitle}>Your rewards journey</h2>
+            <p className={styles.tiersSubtitle}>
+              The more you shop, the more you unlock. Rise through Bloom, Éclat, and Lumière to reveal the full kenzup experience.
+            </p>
+          </header>
+
+          <div className={styles.tiersGrid}>
+            {TIERS.map(tier => (
+              <div
+                key={tier.id}
+                className={[styles.tierCard, tier.highlighted ? styles.tierCardHighlighted : ''].join(' ')}
+              >
+                <div
+                  className={styles.tierCardTop}
+                  style={{ background: tier.color, color: tier.textColor }}
+                >
+                  <span className={styles.tierName}>{tier.name}</span>
+                  <p className={styles.tierThreshold}>{tier.threshold}</p>
+                  <p className={styles.tierThresholdSub}>{tier.thresholdSub}</p>
+                  {tier.highlighted && (
+                    <span className={styles.tierPopular}>Most popular</span>
+                  )}
+                </div>
+
+                <ul className={styles.tierBenefitsList}>
+                  {BENEFIT_LABELS.map((label, i) => (
+                    <li key={label} className={styles.tierBenefitRow}>
+                      <span className={styles.tierBenefitLabel}>{label}</span>
+                      <span className={[
+                        styles.tierBenefitValue,
+                        tier.benefits[i] === null ? styles.tierBenefitNA : '',
+                      ].join(' ')}>
+                        {tier.benefits[i] === true
+                          ? <Check size={14} strokeWidth={2.5} />
+                          : tier.benefits[i] === null
+                            ? <Minus size={13} />
+                            : tier.benefits[i]}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className={styles.tierCta}>
+                  <Link
+                    to="/account"
+                    className={[styles.tierBtn, tier.highlighted ? styles.tierBtnPrimary : ''].join(' ')}
+                  >
+                    {tier.id === 'bloom' ? 'Join free' : 'Start earning'} <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PERKS ═══ */}
+      <section className={styles.perksSection}>
+        <div className="container">
+          <header className={styles.sectionHeader}>
+            <p className={styles.sectionEyebrow}>✦ Member perks</p>
+            <h2 className={styles.sectionTitle}>More than just points</h2>
+          </header>
+          <div className={styles.perksGrid}>
+            {[
+              {
+                icon: '🎁',
+                title: 'Birthday Reward',
+                body: 'A surprise beauty gift every year on your birthday — upgraded at each tier level.',
+                tier: 'All tiers',
+              },
+              {
+                icon: '✨',
+                title: 'Tier Welcome Gift',
+                body: 'Unlock a free beauty gift every time you reach a new tier. More luxurious at Éclat and Lumière.',
+                tier: 'All tiers',
+              },
+              {
+                icon: '🚀',
+                title: 'Early Launch Access',
+                body: 'Be first to shop new launches, limited editions, and exclusive collaborations before the public.',
+                tier: 'Éclat & Lumière',
+              },
+              {
+                icon: '💋',
+                title: 'Personal Beauty Advisor',
+                body: 'Your own dedicated consultant for 1:1 online consultations, routine building, and personalised picks.',
+                tier: 'Lumière only',
+              },
+              {
+                icon: '📦',
+                title: 'Free Delivery',
+                body: 'Éclat members get free standard delivery on every order. Lumière members also enjoy complimentary express delivery.',
+                tier: 'Éclat & Lumière',
+              },
+              {
+                icon: '💰',
+                title: 'Points on Every Order',
+                body: '1 MAD = 1 kenz point on every single order, with bonus multipliers during exclusive member events.',
+                tier: 'All tiers',
+              },
+            ].map(perk => (
+              <div key={perk.title} className={styles.perkCard}>
+                <span className={styles.perkIcon}>{perk.icon}</span>
+                <h3 className={styles.perkTitle}>{perk.title}</h3>
+                <p className={styles.perkBody}>{perk.body}</p>
+                <span className={styles.perkTier}>{perk.tier}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section className={styles.faqSection}>
+        <div className="container">
+          <header className={styles.sectionHeader}>
+            <p className={styles.sectionEyebrow}>✦ Questions answered</p>
+            <h2 className={styles.sectionTitle}>kenzup FAQ</h2>
+          </header>
+          <div className={styles.faqList}>
+            {FAQS.map((faq, i) => (
+              <div
+                key={i}
+                className={[styles.faqItem, openFaq === i ? styles.faqItemOpen : ''].join(' ')}
+              >
+                <button
+                  className={styles.faqQ}
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  <span>{faq.q}</span>
+                  {openFaq === i ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </button>
+                {openFaq === i && <p className={styles.faqA}>{faq.a}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ JOIN CTA ═══ */}
+      <section className={styles.joinSection}>
+        <div className={styles.joinGrain} aria-hidden="true" />
+        <div className="container">
+          <div className={styles.joinContent}>
+            <p className={styles.joinEyebrow}>✦ Ready to start?</p>
+            <h2 className={styles.joinTitle}>Join kenzup today</h2>
+            <p className={styles.joinBody}>
+              Create your free Yan BTY account and start earning kenz points on your very first order. Your beauty rewards journey starts now.
+            </p>
+            <Link to="/account" className={styles.joinBtn}>
+              Create free account <ArrowRight size={15} />
+            </Link>
+            <p className={styles.joinNote}>
+              Already a member?{' '}
+              <Link to="/account/loyalty" className={styles.joinSignIn}>View your dashboard →</Link>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

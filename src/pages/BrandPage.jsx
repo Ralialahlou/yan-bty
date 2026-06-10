@@ -4,18 +4,18 @@ import { ArrowRight } from 'lucide-react';
 import ProductCard from '../components/products/ProductCard';
 import Button from '../components/common/Button';
 import { getBrandBySlug } from '../data/brands';
-import { getProductsByBrand } from '../data/products';
+import { getProductsByBrand, getProductById } from '../data/products';
 import styles from './BrandPage.module.css';
 
 const YAN_ONE_HERO = 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=85';
 
 const YAN_ONE_CATS = [
-  { id: 'all',       label: 'All',         slug: null },
-  { id: 'makeup',    label: 'Makeup',      slug: 'makeup' },
-  { id: 'skincare',  label: 'Skincare',    slug: 'skincare' },
-  { id: 'fragrance', label: 'Fragrance',   slug: 'fragrance' },
-  { id: 'haircare',  label: 'Hair Care',   slug: 'haircare' },
-  { id: 'bodycare',  label: 'Body Care',   slug: 'bodycare' },
+  { id: 'all',       label: 'All' },
+  { id: 'makeup',    label: 'Makeup' },
+  { id: 'skincare',  label: 'Skincare' },
+  { id: 'fragrance', label: 'Fragrance' },
+  { id: 'haircare',  label: 'Hair Care' },
+  { id: 'bodycare',  label: 'Body Care' },
 ];
 
 export default function BrandPage() {
@@ -27,6 +27,10 @@ export default function BrandPage() {
   const brandProducts = activeCat === 'all'
     ? allBrandProducts
     : allBrandProducts.filter(p => p.category === activeCat);
+
+  const iconProducts = (brand?.iconProductIds ?? [])
+    .map(id => getProductById(id))
+    .filter(Boolean);
 
   if (!brand) {
     return (
@@ -41,11 +45,11 @@ export default function BrandPage() {
 
   return (
     <div className={styles.page}>
-      {/* Hero */}
+
+      {/* ═══ HERO ═══ */}
       <section className={styles.hero}>
         {isOwn && (
           <div className={styles.yanOneHeroGrid}>
-            {/* Left: text */}
             <div className={styles.heroContent}>
               <p className={styles.heroLabel}>Yan BTY Signature Collection</p>
               <h1 className={styles.heroTitle}>Yan&One</h1>
@@ -59,18 +63,27 @@ export default function BrandPage() {
                 ))}
               </div>
             </div>
-            {/* Right: full-height image extending to viewport edge */}
             <div className={styles.heroImageWrap}>
               <img src={YAN_ONE_HERO} alt="Yan&One" />
             </div>
           </div>
         )}
-        {!isOwn && (
+
+        {!isOwn && brand.heroImage && (
+          <div className={styles.partnerHeroFull}>
+            <img src={brand.heroImage} alt={brand.name} className={styles.partnerHeroImg} />
+            <div className={styles.partnerHeroOverlay} />
+            <div className={styles.partnerHeroText}>
+              <p className={styles.partnerHeroEyebrow}>Available at Yan BTY</p>
+              <h1 className={styles.partnerHeroName}>{brand.name}</h1>
+              <p className={styles.partnerHeroTagline}>{brand.tagline}</p>
+            </div>
+          </div>
+        )}
+
+        {!isOwn && !brand.heroImage && (
           <div className={styles.partnerHero}>
-            <div
-              className={styles.partnerLogoCircle}
-              style={{ backgroundColor: brand.color }}
-            >
+            <div className={styles.partnerLogoCircle} style={{ backgroundColor: brand.color }}>
               <span>{brand.name[0]}</span>
             </div>
             <h1 className={styles.partnerName}>{brand.name}</h1>
@@ -79,7 +92,47 @@ export default function BrandPage() {
         )}
       </section>
 
-      {/* Products */}
+      {/* ═══ BRAND ABOUT ═══ */}
+      {!isOwn && brand.heroBody && (
+        <section className={styles.brandAbout}>
+          <div className="container">
+            <div className={styles.brandAboutInner}>
+              <p className={styles.brandAboutLabel}>✦ About the brand</p>
+              <p className={styles.brandAboutText}>{brand.heroBody}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ ICON PRODUCTS ═══ */}
+      {!isOwn && iconProducts.length > 0 && (
+        <section className={styles.iconsSection}>
+          <div className="container">
+            <header className={styles.iconsHeader}>
+              <p className={styles.iconsEyebrow}>✦ The Icons</p>
+              <h2 className={styles.iconsTitle}>Must-Have Edits</h2>
+            </header>
+            <div className={styles.iconsGrid}>
+              {iconProducts.map(p => (
+                <Link key={p.id} to={`/product/${p.id}`} className={styles.iconCard}>
+                  <div className={styles.iconCardImg}>
+                    <img src={p.image} alt={p.name} loading="lazy" />
+                  </div>
+                  <div className={styles.iconCardInfo}>
+                    <p className={styles.iconCardCat}>{p.subcategory}</p>
+                    <h3 className={styles.iconCardName}>{p.name}</h3>
+                    <p className={styles.iconCardDesc}>{p.shortDescription}</p>
+                    <p className={styles.iconCardPrice}>{p.price.toLocaleString()} MAD</p>
+                    <span className={styles.iconCardCta}>Shop now <ArrowRight size={13} /></span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ ALL PRODUCTS ═══ */}
       <section className={styles.products}>
         <div className="container">
           <div className={styles.productsHeader}>
@@ -89,7 +142,6 @@ export default function BrandPage() {
             <span className={styles.productsCount}>{brandProducts.length} products</span>
           </div>
 
-          {/* Category nav — Yan&One only, links to filtered PLP */}
           {isOwn && (
             <div className={styles.catNav}>
               {YAN_ONE_CATS.map(cat => (
@@ -122,7 +174,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* Brand story (for own brand) */}
+      {/* ═══ BRAND STORY (Yan&One only) ═══ */}
       {isOwn && (
         <section className={styles.story}>
           <div className="container">

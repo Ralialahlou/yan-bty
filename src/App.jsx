@@ -19,6 +19,7 @@ import BrandPage from './pages/BrandPage';
 import StorePage from './pages/StorePage';
 import GiftCardsPage from './pages/GiftCardsPage';
 import OurStoryPage from './pages/OurStoryPage';
+import LoyaltyPage from './pages/LoyaltyPage';
 import './index.css';
 
 /* Scroll to top on every route change */
@@ -54,7 +55,7 @@ function AppLayout() {
           <Route path="/stores" element={<StorePage />} />
           <Route path="/gift-cards" element={<GiftCardsPage />} />
           <Route path="/about" element={<OurStoryPage />} />
-          <Route path="/loyalty" element={<Navigate to="/account/loyalty" replace />} />
+          <Route path="/loyalty" element={<LoyaltyPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
