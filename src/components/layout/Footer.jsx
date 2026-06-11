@@ -3,6 +3,7 @@ import { Heart } from 'lucide-react';
 import Logo from '../common/Logo';
 import styles from './Footer.module.css';
 
+// to: null means coming soon — rendered as a <span> instead of <Link>
 const footerLinks = [
   {
     heading: 'Shop',
@@ -29,21 +30,21 @@ const footerLinks = [
   {
     heading: 'Help',
     links: [
-      { label: 'Shipping & Delivery', to: '/help/shipping' },
-      { label: 'Returns', to: '/help/returns' },
+      { label: 'Shipping & Delivery', to: null },
+      { label: 'Returns', to: null },
       { label: 'Track Your Order', to: '/account/orders' },
-      { label: 'FAQ', to: '/help/faq' },
-      { label: 'Contact Us', to: '/help/contact' },
+      { label: 'FAQ', to: null },
+      { label: 'Contact Us', to: null },
     ],
   },
   {
     heading: 'Discover',
     links: [
       { label: 'All Brands', to: '/brands' },
-      { label: 'Ingredient Glossary', to: '/ingredients' },
+      { label: 'Ingredient Glossary', to: null },
       { label: 'Skincare Routines', to: '/journal?category=routines' },
       { label: 'Beauty Advice', to: '/journal?category=expert' },
-      { label: 'Sustainability', to: '/sustainability' },
+      { label: 'Sustainability', to: null },
     ],
   },
 ];
@@ -109,7 +110,10 @@ export default function Footer() {
                 <ul className={styles.colLinks}>
                   {col.links.map(l => (
                     <li key={l.label}>
-                      <Link to={l.to} className={styles.colLink}>{l.label}</Link>
+                      {l.to
+                        ? <Link to={l.to} className={styles.colLink}>{l.label}</Link>
+                        : <span className={styles.colLinkDisabled}>{l.label}</span>
+                      }
                     </li>
                   ))}
                 </ul>
@@ -124,9 +128,9 @@ export default function Footer() {
           <div className={styles.bottomInner}>
             <p className={styles.copy}>© 2025 Yan BTY. All rights reserved.</p>
             <div className={styles.legal}>
-              <Link to="/privacy" className={styles.legalLink}>Privacy Policy</Link>
-              <Link to="/terms" className={styles.legalLink}>Terms of Service</Link>
-              <Link to="/cookies" className={styles.legalLink}>Cookies</Link>
+              <span className={styles.legalLink}>Privacy Policy</span>
+              <span className={styles.legalLink}>Terms of Service</span>
+              <span className={styles.legalLink}>Cookies</span>
             </div>
           </div>
         </div>

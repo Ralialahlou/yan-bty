@@ -95,7 +95,7 @@ export default function ProductListPage() {
     }
 
     return result;
-  }, [category, filterParam, searchQuery, certParam, activeFilters, sort]);
+  }, [category, filterParam, searchQuery, activeFilters, sort]);
 
   const totalActiveFilters = Object.values(activeFilters).flat().filter(Boolean).length;
 

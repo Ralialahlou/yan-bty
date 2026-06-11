@@ -74,7 +74,12 @@ export default function StorePage() {
                 ))}
               </div>
 
-              <a href="#" className={styles.directionsBtn}>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(store.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.directionsBtn}
+              >
                 <Navigation size={14} /> Get Directions
               </a>
             </div>

@@ -577,7 +577,7 @@ export const products = [
   {
     id: 'fe-001',
     name: 'Pro Filt\'r Soft Matte Foundation',
-    brand: 'fenty',
+    brand: 'fenty-beauty',
     brandName: 'Fenty Beauty',
     category: 'makeup',
     subcategory: 'Foundation',
@@ -700,7 +700,7 @@ export const products = [
   {
     id: 'ki-001',
     name: 'Ultra Facial Cream',
-    brand: 'kiehl',
+    brand: 'kiehls',
     brandName: "Kiehl's",
     category: 'skincare',
     subcategory: 'Moisturiser',

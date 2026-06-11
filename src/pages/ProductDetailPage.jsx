@@ -6,6 +6,7 @@ import RatingStars from '../components/common/RatingStars';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import { getProductById, products } from '../data/products';
+import { getBrandById } from '../data/brands';
 import SEO from '../components/common/SEO';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -114,7 +115,7 @@ export default function ProductDetailPage() {
           {/* Info */}
           <div className={styles.info}>
             <div className={styles.brandRow}>
-              <Link to={`/brand/${product.brand}`} className={styles.brand}>{product.brandName}</Link>
+              <Link to={`/brand/${getBrandById(product.brand)?.slug ?? product.brand}`} className={styles.brand}>{product.brandName}</Link>
               {product.brand === 'yan-one' && <Badge variant="own">Our Brand</Badge>}
             </div>
             <h1 className={styles.name}>{product.name}</h1>

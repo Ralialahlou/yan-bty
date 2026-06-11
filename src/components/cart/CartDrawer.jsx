@@ -56,9 +56,9 @@ export default function CartDrawer() {
             <ShoppingBag size={48} className={styles.emptyIcon} />
             <p className={styles.emptyTitle}>Your bag is empty</p>
             <p className={styles.emptyDesc}>Discover our curated selection of beauty brands</p>
-            <Button variant="primary" onClick={closeCart}>
-              <Link to="/shop" style={{ color: 'inherit', textDecoration: 'none' }}>Start Shopping</Link>
-            </Button>
+            <Link to="/shop" onClick={closeCart} className={styles.startShoppingBtn}>
+              Start Shopping
+            </Link>
           </div>
         ) : (
           <>
@@ -128,10 +128,8 @@ export default function CartDrawer() {
             </div>
 
             <div className={styles.cta}>
-              <Link to="/checkout" onClick={closeCart}>
-                <Button variant="primary" fullWidth size="lg">
-                  Checkout · {(subtotal + shippingCost).toLocaleString()} MAD
-                </Button>
+              <Link to="/checkout" onClick={closeCart} className={styles.checkoutBtn}>
+                Checkout · {(subtotal + shippingCost).toLocaleString()} MAD
               </Link>
               <button className={styles.continueShopping} onClick={closeCart}>
                 Continue Shopping

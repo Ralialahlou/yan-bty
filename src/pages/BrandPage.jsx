@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ProductCard from '../components/products/ProductCard';
 import Button from '../components/common/Button';
@@ -18,11 +18,29 @@ const YAN_ONE_CATS = [
   { id: 'bodycare',  label: 'Body Care' },
 ];
 
+// Map header mega-menu ?cat= values → YAN_ONE_CATS ids
+const CAT_PARAM_MAP = {
+  face: 'makeup', eyes: 'makeup', lips: 'makeup', brows: 'makeup',
+  nails: 'makeup', accessories: 'makeup',
+  body: 'bodycare', sun: 'bodycare', rituals: 'bodycare',
+  skincare: 'skincare', fragrance: 'fragrance', haircare: 'haircare',
+};
+
 export default function BrandPage() {
   const { slug } = useParams();
+  const [searchParams] = useSearchParams();
   const brand = getBrandBySlug(slug);
   const allBrandProducts = getProductsByBrand(brand?.id ?? '');
-  const [activeCat, setActiveCat] = useState('all');
+  const resolvecat = (raw) => {
+    if (!raw) return 'all';
+    if (YAN_ONE_CATS.some(c => c.id === raw)) return raw;
+    return CAT_PARAM_MAP[raw] ?? 'all';
+  };
+  const [activeCat, setActiveCat] = useState(() => resolvecat(searchParams.get('cat')));
+
+  useEffect(() => {
+    setActiveCat(resolvecat(searchParams.get('cat')));
+  }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const brandProducts = activeCat === 'all'
     ? allBrandProducts

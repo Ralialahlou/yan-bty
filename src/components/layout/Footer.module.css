@@ -170,6 +170,7 @@
   transition: color var(--transition-fast);
 }
 .colLink:hover { color: var(--color-white); }
+.colLinkDisabled { font-size: 13px; font-weight: var(--font-weight-light); color: rgba(212,163,145,0.4); cursor: default; }
 
 /* Bottom bar */
 .bottom {

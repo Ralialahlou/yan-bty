@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { User, Package, Heart, Star, MapPin, Settings, LogOut, ChevronRight, ChevronLeft, Plus, Edit2, Trash2, Check, Smartphone, ExternalLink } from 'lucide-react';
 import Button from '../components/common/Button';
@@ -21,7 +21,7 @@ const MOCK_ORDER_ITEMS = {
   'ORD-2025-001': [
     { id: 'yo-002', name: 'Golden Glow Serum', brand: 'Yan&One', price: 690, qty: 1, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80' },
     { id: 'lrp-001', name: 'Toleriane Double Repair', brand: 'La Roche-Posay', price: 340, qty: 1, image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&q=80' },
-    { id: 'ct-001', name: 'Pillow Talk Lipstick', brand: 'Charlotte Tilbury', price: 520, qty: 1, image: 'https://images.unsplash.com/photo-1599733594230-6b823276abcc?w=200&q=80' },
+    { id: 'ct-001', name: 'Pillow Talk Blush Balm Lip Tint', brand: 'Charlotte Tilbury', price: 580, qty: 1, image: 'https://images.ctfassets.net/wlke2cbybljx/1hP7yEqN4aBN7AKqOOFYh8/8f1e8e24a4d79c1d0a68c0b3cbf68d56/PT_Blush_Balm_-_PT_-_Open.png' },
   ],
   'ORD-2025-002': [
     { id: 'yo-001', name: 'Luminous Veil Foundation', brand: 'Yan&One', price: 580, qty: 1, image: 'https://images.unsplash.com/photo-1631214500004-f8b36869f28e?w=200&q=80' },
@@ -45,6 +45,19 @@ export default function AccountPage() {
     user ? { firstName: user.name.split(' ')[0] || '', lastName: user.name.split(' ')[1] || '', gender: '', birthday: '' } : {}
   );
   const [profileSaved, setProfileSaved] = useState(false);
+
+  // Sync profile and addresses when user logs in after mount
+  useEffect(() => {
+    if (user) {
+      setProfileEdit({
+        firstName: user.name.split(' ')[0] || '',
+        lastName: user.name.split(' ')[1] || '',
+        gender: '',
+        birthday: '',
+      });
+      setAddresses(user.savedAddresses ?? []);
+    }
+  }, [user?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Beauty profile state
   const [beautyProfile, setBeautyProfile] = useState(profile ?? { skinType: '', concerns: [], preferences: [] });
@@ -737,8 +750,8 @@ function OrderDetail({ order, items, onBack }) {
         <p className={styles.shippingLine}>Morocco</p>
       </div>
       <div className={styles.orderDetailActions}>
-        <Button variant="outline">Track Shipment</Button>
-        <Button variant="ghost">Need Help?</Button>
+        <Button variant="outline" disabled title="Coming soon">Track Shipment</Button>
+        <Button variant="ghost" disabled title="Coming soon">Need Help?</Button>
       </div>
     </div>
   );

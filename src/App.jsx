@@ -20,6 +20,8 @@ import StorePage from './pages/StorePage';
 import GiftCardsPage from './pages/GiftCardsPage';
 import OurStoryPage from './pages/OurStoryPage';
 import LoyaltyPage from './pages/LoyaltyPage';
+import AllBrandsPage from './pages/AllBrandsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './index.css';
 
 /* Scroll to top on every route change */
@@ -46,17 +48,17 @@ function AppLayout() {
           <Route path="/shop/:category" element={<ProductListPage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/account" element={<AccountPage />} />
+          <Route path="/account" element={<Navigate to="/account/profile" replace />} />
           <Route path="/account/:section" element={<AccountPage />} />
           <Route path="/journal" element={<JournalPage />} />
           <Route path="/journal/:slug" element={<JournalPage />} />
           <Route path="/brand/:slug" element={<BrandPage />} />
-          <Route path="/brands" element={<BrandPage />} />
+          <Route path="/brands" element={<AllBrandsPage />} />
           <Route path="/stores" element={<StorePage />} />
           <Route path="/gift-cards" element={<GiftCardsPage />} />
           <Route path="/about" element={<OurStoryPage />} />
           <Route path="/loyalty" element={<LoyaltyPage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

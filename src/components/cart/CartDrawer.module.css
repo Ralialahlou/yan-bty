@@ -359,3 +359,22 @@
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
+
+.checkoutBtn {
+  display: block; width: 100%; padding: 14px 20px;
+  background: var(--color-tabla-red); color: white;
+  text-align: center; text-decoration: none;
+  border-radius: var(--radius-full); font-size: 14px;
+  font-weight: var(--font-weight-medium); letter-spacing: 0.04em;
+  transition: opacity var(--transition-fast);
+}
+.checkoutBtn:hover { opacity: 0.88; }
+
+.startShoppingBtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 11px 24px; background: var(--color-tabla-red); color: white;
+  text-decoration: none; border-radius: var(--radius-full);
+  font-size: 13px; font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em; transition: opacity var(--transition-fast);
+}
+.startShoppingBtn:hover { opacity: 0.88; }

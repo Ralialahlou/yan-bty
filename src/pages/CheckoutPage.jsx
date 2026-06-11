@@ -20,6 +20,7 @@ export default function CheckoutPage() {
     cardNumber: '', cardExpiry: '', cardCvv: '',
   });
   const [giftMessage, setGiftMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
   const update = (field, val) => setForm(f => ({ ...f, [field]: val }));
 
@@ -104,7 +105,14 @@ export default function CheckoutPage() {
                     <input id="co-phone" className={styles.input} value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+212 6 00 00 00 00" autoComplete="tel" />
                   </div>
                 </div>
-                <Button variant="primary" fullWidth size="lg" onClick={() => setStep(2)}>
+                {errors.step1 && <p style={{ color: '#b91c1c', fontSize: 13, marginBottom: 8 }}>{errors.step1}</p>}
+                <Button variant="primary" fullWidth size="lg" onClick={() => {
+                  if (!form.firstName.trim() || !form.lastName.trim()) return setErrors({ step1: 'Please enter your full name.' });
+                  if (!form.email.includes('@')) return setErrors({ step1: 'Please enter a valid email address.' });
+                  if (!form.phone.trim()) return setErrors({ step1: 'Please enter your phone number.' });
+                  setErrors({});
+                  setStep(2);
+                }}>
                   Continue to Shipping <ChevronRight size={16} />
                 </Button>
               </div>
@@ -181,9 +189,16 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
+                {errors.step2 && <p style={{ color: '#b91c1c', fontSize: 13, marginBottom: 8 }}>{errors.step2}</p>}
                 <div className={styles.btnRow}>
                   <Button variant="ghost" onClick={() => setStep(1)}>Back</Button>
-                  <Button variant="primary" size="lg" onClick={() => setStep(3)}>
+                  <Button variant="primary" size="lg" onClick={() => {
+                    if (!form.address.trim()) return setErrors({ step2: 'Please enter your address.' });
+                    if (!form.city.trim()) return setErrors({ step2: 'Please enter your city.' });
+                    if (!form.zip.trim()) return setErrors({ step2: 'Please enter your ZIP code.' });
+                    setErrors({});
+                    setStep(3);
+                  }}>
                     Continue to Payment <ChevronRight size={16} />
                   </Button>
                 </div>
@@ -220,9 +235,18 @@ export default function CheckoutPage() {
                   </div>
                 )}
 
+                {errors.step3 && <p style={{ color: '#b91c1c', fontSize: 13, marginBottom: 8 }}>{errors.step3}</p>}
                 <div className={styles.btnRow}>
                   <Button variant="ghost" onClick={() => setStep(2)}>Back</Button>
-                  <Button variant="accent" size="lg" fullWidth loading={placing} onClick={placeOrder}>
+                  <Button variant="accent" size="lg" fullWidth loading={placing} onClick={() => {
+                    if (form.paymentMethod === 'card') {
+                      if (!form.cardNumber.trim()) return setErrors({ step3: 'Please enter your card number.' });
+                      if (!form.cardExpiry.trim()) return setErrors({ step3: 'Please enter the card expiry.' });
+                      if (!form.cardCvv.trim()) return setErrors({ step3: 'Please enter your CVV.' });
+                    }
+                    setErrors({});
+                    placeOrder();
+                  }}>
                     Place Order · {(subtotal + shippingCost).toLocaleString()} MAD
                   </Button>
                 </div>

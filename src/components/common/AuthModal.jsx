@@ -6,8 +6,8 @@ import Logo from './Logo';
 import styles from './AuthModal.module.css';
 
 export default function AuthModal() {
-  const { isAuthOpen, authMode, closeAuth, login, register } = useAuth();
-  const [mode, setMode] = useState(authMode ?? 'login');
+  const { isAuthOpen, authMode, openAuth, closeAuth, login, register } = useAuth();
+  const mode = authMode ?? 'login';
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +64,7 @@ export default function AuthModal() {
         <p className={styles.switchText}>
           {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
           {' '}
-          <button className={styles.switchBtn} onClick={() => setMode(m => m === 'login' ? 'register' : 'login')}>
+          <button className={styles.switchBtn} onClick={() => openAuth(mode === 'login' ? 'register' : 'login')}>
             {mode === 'login' ? 'Register' : 'Sign In'}
           </button>
         </p>

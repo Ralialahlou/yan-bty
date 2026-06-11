@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
-import { ArrowRight, Star, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import ProductCard from '../components/products/ProductCard';
 import Button from '../components/common/Button';
 import { products, getBestsellers, getNewArrivals, getEditorsPicks } from '../data/products';
