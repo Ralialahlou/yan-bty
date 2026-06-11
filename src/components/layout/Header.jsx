@@ -259,6 +259,12 @@ const navLinks = [
   },
 ];
 
+const getInitials = (name = '') => {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  return parts[0]?.slice(0, 2).toUpperCase() ?? '?';
+};
+
 // Links shown in mobile drawer only (not in desktop bar)
 const mobileOnlyLinks = [
   { label: 'Beauty Journal', to: '/journal' },
@@ -346,8 +352,15 @@ export default function Header() {
             <button className={styles.iconBtn} onClick={() => user ? setWishlistOpen(true) : openAuth('login')} aria-label="Wishlist">
               <Heart size={20} />
             </button>
-            <button className={styles.iconBtn} onClick={() => user ? navigate('/account') : openAuth('login')} aria-label="Account">
-              <User size={20} />
+            <button
+              className={[styles.iconBtn, user ? styles.iconBtnAccount : ''].join(' ')}
+              onClick={() => user ? navigate('/account/profile') : openAuth('login')}
+              aria-label={user ? `Account — ${user.name}` : 'Sign in'}
+            >
+              {user
+                ? <span className={styles.avatar} aria-hidden="true">{getInitials(user.name)}</span>
+                : <User size={20} />
+              }
             </button>
             <button className={styles.cartBtn} onClick={openCart} aria-label={`Cart${itemCount > 0 ? `, ${itemCount} item${itemCount === 1 ? '' : 's'}` : ''}`}>
               <ShoppingBag size={20} />
@@ -507,8 +520,9 @@ export default function Header() {
 
             <div className={styles.mobileFooter}>
               {user ? (
-                <Link to="/account" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
-                  <User size={16} /> {user.name}
+                <Link to="/account/profile" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
+                  <span className={styles.avatarSm} aria-hidden="true">{getInitials(user.name)}</span>
+                  {user.name}
                 </Link>
               ) : (
                 <button className={styles.mobileNavLink} onClick={() => { openAuth('login'); setMobileOpen(false); }}>
