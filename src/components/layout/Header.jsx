@@ -260,10 +260,30 @@ const navLinks = [
 ];
 
 const getInitials = (name = '') => {
-  const parts = name.trim().split(/\s+/);
+  const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  return parts[0]?.slice(0, 2).toUpperCase() ?? '?';
+  return (parts[0]?.slice(0, 2) ?? '?').toUpperCase();
 };
+
+const AVATAR_STYLE = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '28px',
+  height: '28px',
+  borderRadius: '50%',
+  backgroundColor: '#332114',
+  color: '#ffffff',
+  fontSize: '10px',
+  fontWeight: '700',
+  letterSpacing: '0.06em',
+  lineHeight: '1',
+  flexShrink: '0',
+  userSelect: 'none',
+  fontFamily: 'inherit',
+};
+
+const AVATAR_SM_STYLE = { ...AVATAR_STYLE, width: '24px', height: '24px', fontSize: '9px' };
 
 // Links shown in mobile drawer only (not in desktop bar)
 const mobileOnlyLinks = [
@@ -358,7 +378,7 @@ export default function Header() {
               aria-label={user ? `Account — ${user.name}` : 'Sign in'}
             >
               {user
-                ? <span className={styles.avatar} aria-hidden="true">{getInitials(user.name)}</span>
+                ? <span style={AVATAR_STYLE} aria-hidden="true">{getInitials(user.name)}</span>
                 : <User size={20} />
               }
             </button>
@@ -521,7 +541,7 @@ export default function Header() {
             <div className={styles.mobileFooter}>
               {user ? (
                 <Link to="/account/profile" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
-                  <span className={styles.avatarSm} aria-hidden="true">{getInitials(user.name)}</span>
+                  <span style={AVATAR_SM_STYLE} aria-hidden="true">{getInitials(user.name)}</span>
                   {user.name}
                 </Link>
               ) : (
